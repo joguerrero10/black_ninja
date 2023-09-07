@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  position: relative;
+  background-color: #172025;
+  background-image: url(../img/intro/back.svg);
+  background-repeat: repeat-x;
+  background-position: top;
+  overflow-y: hidden;
+}
+
+/*=============================================
+Frame
+=============================================*/
+#frame {
+  position: absolute;
+  width: 1060px;
+  height: 560px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0px 5px 10px black;
+  background: #172025;
+  top: -30px;
+  left: 50%;
+  margin-left: -530px;
+}
+
+/*=============================================
+Container
+=============================================*/
+#container {
+  position: relative;
+}
