@@ -17,7 +17,7 @@ body {
 /*=============================================
 Frame
 =============================================*/
-#frame {
+.frame {
   position: absolute;
   width: 1060px;
   height: 560px;
@@ -32,6 +32,29 @@ Frame
 /*=============================================
 Container
 =============================================*/
-#container {
+.container {
   position: relative;
+  margin: 5vh auto;
+  width: 1000px;
+  height: 500px;
+  background: white;
 }
+
+/*=============================================
+CREDITS
+=============================================*/
+
+footer {
+  position: relative;
+  padding: 8px;
+  font-family: sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+span {
+  color: #fff;
+}
+
+/* footer a {
+  color: white;
+} */
