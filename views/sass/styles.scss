@@ -59,9 +59,9 @@ Frame
 Container
 =============================================*/
 .container {
-  position: relative;
-  margin: 5vh auto;
-  width: 1000px;
-  height: 500px;
-  background: white;
+  position: relative !important;
+  margin: 5vh auto !important;
+  width: 1000px !important;
+  height: 500px !important;
+  background: white !important;
 }
