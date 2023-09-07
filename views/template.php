@@ -10,15 +10,31 @@
 
   <link href="views/css/styles.css" type="text/css" rel="stylesheet" media="">
 
+  <link href="views/css/login.css" type="text/css" rel="stylesheet" media="">
+
+  <link href="views/css/footer.css" type="text/css" rel="stylesheet" media="">
+
   <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
 </head>
 
 <body>
+  <!--=====================================
+	VERTICAL SCREEN
+	======================================-->
+
+  <div class="vertical"></div>
+
+  <!--=====================================
+	FRAME
+	======================================-->
   <div class="frame"></div>
 
+  <!--=====================================
+	CONTAINER
+	======================================-->
   <div class="container">
     <?php
-    include './modules/login.php';
+    include "modules/login.php";
     ?>
   </div>
 
