@@ -5,5 +5,7 @@ class managerUsersController
   {
     $dataController = array('identitify' => $data['identitify'], 'first_name' => $data['first_name'], 'photo' => $data['photo']);
     $response = managerUsersModels::saveUsersModels($dataController);
+
+    echo $response;
   }
 }

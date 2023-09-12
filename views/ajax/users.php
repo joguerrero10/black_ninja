@@ -13,8 +13,8 @@ class Ajax
   {
 
     $data = array('identitify' => $this->identitify, 'first_name' => $this->first_name, 'photo' => $this->photo);
-    managerUsersController::saveUsersControllers($data);
-    echo $data['identitify'];
+    $response = managerUsersController::saveUsersControllers($data);
+    echo $response;
   }
 }
 
