@@ -3,9 +3,15 @@ class managerUsersController
 {
   static  public  function saveUsersControllers($data)
   {
+    $responseInsert = "";
     $dataController = array('identitify' => $data['identitify'], 'first_name' => $data['first_name'], 'photo' => $data['photo']);
-    $response = managerUsersModels::saveUsersModels($dataController);
+    $responseSelect = managerUsersModels::SelectUsersModels($dataController);
+    if (!$responseSelect) {
+      $responseInsert  = managerUsersModels::saveUsersModels($dataController);
+    }
 
-    echo $response;
+
+    echo $responseInsert;
+    var_dump($responseSelect);
   }
 }

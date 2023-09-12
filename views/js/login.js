@@ -1,25 +1,7 @@
-// (function () {
-//   // Para que se ejecute solo una vez
-//   ("use strict");
-
-//   document.addEventListener("DOMContentLoaded", function () {
-//     const login = {
-//       login: () => {
-//         let identitify = "2222";
-//         let first_name = "Joel";
-//         let photo = "views/img/intro/julio.png";
-
-//         let xhr = new XMLHttpRequest();
-//       },
-//     };
-//     console.log("DOM fully loaded and parsed");
-//   }); //DOM CONTENT LOADED
-// });
-
 const login = {
   login: () => {
-    let identitify = "2222";
-    let first_name = "Joel";
+    let identitify = "1111";
+    let first_name = "maria";
     let photo = "views/img/intro/julio.png";
 
     let xhr = new XMLHttpRequest();
