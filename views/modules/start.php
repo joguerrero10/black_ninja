@@ -2,7 +2,7 @@
 session_start();
 
 if (!$_SESSION['validate']) {
-  header('location:index.php?validate=login');
+  header('location:login');
   exit();
 }
 ?>
@@ -11,7 +11,7 @@ INICIO
 ======================================-->
 <div class="start">
   <div class="close_session">
-    <a href="index.php?validate=exit">Cerrar Sesión</a>
+    <a href="exit">Cerrar Sesión</a>
   </div>
 
   <h2 class="greeting">¡Hola <?php echo $_SESSION["first_name"];

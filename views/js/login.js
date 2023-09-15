@@ -19,7 +19,7 @@ const login = {
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status === 200) {
         if (xhr.responseText === "ok") {
-          window.location = "index.php?validate=start";
+          window.location = "start";
         }
       }
     };
