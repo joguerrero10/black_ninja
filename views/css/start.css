@@ -1,0 +1,71 @@
+.start {
+  position: absolute;
+  width: 1000px;
+  height: 500px;
+  top: 0;
+  left: 0px;
+  background: url("../img/intro/inicio.svg");
+  font-family: "Patrick Hand", cursive;
+}
+.start .close_session a {
+  position: absolute;
+  right: 0%;
+  text-align: center;
+  color: white;
+  top: -25px;
+  text-decoration: none;
+}
+.start .greeting {
+  position: absolute;
+  left: 50%;
+  width: 1000px;
+  text-align: center;
+  margin-left: -500px;
+  color: white;
+}
+.start .greeting .profile_user_img {
+  border-radius: 100%;
+  margin-left: 10px;
+  width: 30px;
+}
+.start .levels {
+  float: left;
+  position: relative;
+  width: 33.33%;
+  height: 300px;
+  margin-top: 200px;
+  text-align: center;
+}
+.start .levels .point {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  width: 100%;
+  margin-left: -50%;
+  color: white;
+  font-size: 20px;
+}
+.start .levels .btn-center {
+  display: flex;
+  justify-content: center;
+}
+.start .levels .btn-center .btn-start {
+  display: block;
+  width: 100px;
+  margin: 10px 0;
+  padding: 10px;
+  border: 0;
+  background: #131c17;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px 0 10px 0;
+  cursor: pointer;
+}
+.start .levels .btn-center :hover {
+  width: 120px;
+  margin: 15px 0;
+  transition: all 0.1s;
+}
+.start .levels .btn-center :active {
+  background: green;
+}

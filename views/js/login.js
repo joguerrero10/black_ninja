@@ -1,6 +1,6 @@
 const login = {
   login: () => {
-    let identitify = "1111";
+    let identitify = "111111";
     let first_name = "maria";
     let photo = "views/img/intro/julio.png";
 
@@ -18,7 +18,9 @@ const login = {
     );
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log("xhr.responseText", xhr.responseText);
+        if (xhr.responseText === "ok") {
+          window.location = "index.php?validate=start";
+        }
       }
     };
   },

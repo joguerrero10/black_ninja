@@ -20,6 +20,11 @@
     rel="stylesheet"
     media="">
 
+  <link href="views/css/start.css"
+    type="text/css"
+    rel="stylesheet"
+    media="">
+
   <link href="views/css/footer.css"
     type="text/css"
     rel="stylesheet"
@@ -51,7 +56,12 @@
 	======================================-->
   <div class="container">
     <?php
-    include "modules/login.php";
+    if (isset($_GET['validate'])) {
+      include "modules/start.php";
+    } else {
+      include "modules/login.php";
+    }
+
     ?>
   </div>
 

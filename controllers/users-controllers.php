@@ -1,6 +1,8 @@
 <?php
 class managerUsersController
 {
+  #GUARDAR USUARIO
+  #------------------------------------------------------------
   static  public  function saveUsersControllers($data)
   {
     $responseInsert = "";
@@ -10,8 +12,8 @@ class managerUsersController
       $responseInsert  = managerUsersModels::saveUsersModels($dataController);
     }
 
-
-    echo $responseInsert;
-    var_dump($responseSelect);
+    if ($responseSelect || $responseInsert == "ok") {
+      echo 'ok';
+    }
   }
 }

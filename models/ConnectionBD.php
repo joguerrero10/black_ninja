@@ -1,16 +1,16 @@
 <?php
-
 class ConnectionBD
 {
   public static function cBD()
   {
     //usar $_ENV o getenv o $_SERVER
-    $servername = getenv('DB_HOST');
-    $username = getenv('DB_USERNAME');
-    $password = getenv('DB_PASSWORD');
-    $port = getenv('DB_PORT');
-    $databasename = getenv('DB_DATABASE_NAME');
+    //$servername = $_ENV["DB_HOST"];
+    // $username = $_ENV["DB_USERNAME"];
+    // $password = $_ENV["DB_PASSWORD"];
+    // $databasename = "black_ninja";
+    // $port = 4306;
 
+    $servername = "localhost";
     $username = "root";
     $password = "";
     $databasename = "black_ninja";
