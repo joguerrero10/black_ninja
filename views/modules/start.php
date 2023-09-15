@@ -11,7 +11,7 @@ INICIO
 ======================================-->
 <div class="start">
   <div class="close_session">
-    <a href="">Cerrar Sesión</a>
+    <a href="index.php?validate=exit">Cerrar Sesión</a>
   </div>
 
   <h2 class="greeting">¡Hola <?php echo $_SESSION["first_name"];
