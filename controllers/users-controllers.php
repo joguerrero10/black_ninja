@@ -13,6 +13,10 @@ class managerUsersController
     }
 
     if ($responseSelect || $responseInsert == "ok") {
+      session_start();
+      $_SESSION['validate'] = true;
+      $_SESSION["first_name"] = $responseSelect["first_name"];
+      $_SESSION["photo"] = $responseSelect["photo"];
       echo 'ok';
     }
   }

@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!$_SESSION['validate']) {
+  header('location:index.php?validate=login');
+  exit();
+}
+?>
 <!--=====================================
 INICIO
 ======================================-->
@@ -6,23 +14,18 @@ INICIO
     <a href="">Cerrar Sesión</a>
   </div>
 
-  <h2 class="greeting">
-    !Hola Maria<img src="views/img/intro/maria.png"
-      alt="profile"
-      class="profile_user_img">
-    Bienvenid@!
-  </h2>
+  <h2 class="greeting">¡Hola <?php echo $_SESSION["first_name"];
+                              echo '<img alt="profile" class="profile_user_img" src="' . $_SESSION["photo"] . '">'
+                              ?> bienvenid@!</h2>
 
   <!--=====================================
 	NIVEL 1
 	======================================-->
 
-  <div id="level1"
-    class="levels">
+  <div id="level1" class="levels">
     <div class="point">100 pts</div>
 
-    <img src="views/img/intro/checkLevel1.svg"
-      alt="level1-check">
+    <img src="views/img/intro/checkLevel1.svg" alt="level1-check">
 
     <div class="btn-center">
       <button class="btn-start">Ingresar</button>
@@ -36,12 +39,10 @@ INICIO
   <!--=====================================
 	NIVEL 2
 	======================================-->
-  <div id="level2"
-    class="levels">
+  <div id="level2" class="levels">
     <div class="point">0 pts</div>
 
-    <img src="views/img/intro/blockLevel2.svg"
-      alt="blockLevel2-check">
+    <img src="views/img/intro/blockLevel2.svg" alt="blockLevel2-check">
 
     <div class="points">
 
@@ -51,12 +52,10 @@ INICIO
   <!--=====================================
 	NIVEL 3
 	======================================-->
-  <div id="level3"
-    class="levels">
+  <div id="level3" class="levels">
     <div class="point">0 pts</div>
 
-    <img src="views/img/intro/blockLevel3.svg"
-      alt="blockLevel3-check">
+    <img src="views/img/intro/blockLevel3.svg" alt="blockLevel3-check">
 
     <div class="points">
 
