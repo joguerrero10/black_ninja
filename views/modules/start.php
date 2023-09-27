@@ -23,7 +23,7 @@ INICIO
 	======================================-->
 
   <div id="level1" class="levels">
-    <div class="point">100 pts</div>
+    <div class="point"><?php echo $_SESSION['points_level1']; ?> pts</div>
 
     <img src="views/img/intro/checkLevel1.svg" alt="level1-check">
 
@@ -40,9 +40,22 @@ INICIO
 	NIVEL 2
 	======================================-->
   <div id="level2" class="levels">
-    <div class="point">0 pts</div>
+    <div class="point"> <?php echo $_SESSION['points_level2']; ?> pts</div>
 
-    <img src="views/img/intro/blockLevel2.svg" alt="blockLevel2-check">
+    <?php
+    if ($_SESSION['level2'] == 'ok') {
+      echo '<img src="views/img/intro/checkLevel2.svg"
+      alt="level2-check">
+          <div class="btn-center">
+      <button class="btn-start">Ingresar</button>
+    </div>
+      ';
+    } else {
+      echo '<img src="views/img/intro/blockLevel2.svg" alt="blockLevel2-check">';
+    }
+
+    ?>
+
 
     <div class="points">
 
@@ -53,9 +66,23 @@ INICIO
 	NIVEL 3
 	======================================-->
   <div id="level3" class="levels">
-    <div class="point">0 pts</div>
+    <div class="point"><?php echo $_SESSION['points_level3']; ?> pts</div>
 
-    <img src="views/img/intro/blockLevel3.svg" alt="blockLevel3-check">
+    <?php
+    if ($_SESSION['level3'] == 'ok') {
+      echo '<img src="views/img/intro/checkLevel3.svg"
+      alt="level3-check">
+          <div class="btn-center">
+      <button class="btn-start">Ingresar</button>
+    </div>
+      ';
+    } else {
+      echo '<img src="views/img/intro/blockLevel3.svg" alt="blockLevel3-check">';
+    }
+
+    ?>
+
+
 
     <div class="points">
 
