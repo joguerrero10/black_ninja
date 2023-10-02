@@ -9,7 +9,8 @@ if (!$_SESSION['validate']) {
 <!--=====================================
 INICIO
 ======================================-->
-<div class="start">
+<div id="start"
+  class="start">
   <div class="close_session">
     <a href="exit">Cerrar Sesión</a>
   </div>
@@ -22,13 +23,18 @@ INICIO
 	NIVEL 1
 	======================================-->
 
-  <div id="level1" class="levels">
+  <div id="level1"
+    class="levels">
     <div class="point"><?php echo $_SESSION['points_level1']; ?> pts</div>
 
-    <img src="views/img/intro/checkLevel1.svg" alt="level1-check">
+    <img src="views/img/intro/checkLevel1.svg"
+      alt="level1-check">
 
     <div class="btn-center">
-      <button class="btn-start">Ingresar</button>
+      <button class="btn-start"
+        onclick="login.selectLevel(this)"
+        level="1">Ingresar
+      </button>
     </div>
 
     <div class="points">
@@ -46,7 +52,8 @@ INICIO
   <!--=====================================
 	NIVEL 2
 	======================================-->
-  <div id="level2" class="levels">
+  <div id="level2"
+    class="levels">
     <div class="point"> <?php echo $_SESSION['points_level2']; ?> pts</div>
 
     <?php
@@ -54,7 +61,8 @@ INICIO
       echo '<img src="views/img/intro/checkLevel2.svg"
       alt="level2-check">
           <div class="btn-center">
-      <button class="btn-start">Ingresar</button>
+      <button class="btn-start"  onclick="login.selectLevel(this)"
+        level="2">Ingresar</button>
     </div>
       ';
     } else {
@@ -78,7 +86,8 @@ INICIO
   <!--=====================================
 	NIVEL 3
 	======================================-->
-  <div id="level3" class="levels">
+  <div id="level3"
+    class="levels">
     <div class="point"><?php echo $_SESSION['points_level3']; ?> pts</div>
 
     <?php
@@ -86,7 +95,8 @@ INICIO
       echo '<img src="views/img/intro/checkLevel3.svg"
       alt="level3-check">
           <div class="btn-center">
-      <button class="btn-start">Ingresar</button>
+      <button class="btn-start"  onclick="login.selectLevel(this)"
+        level="3">Ingresar</button>
     </div>
       ';
     } else {
@@ -107,3 +117,30 @@ INICIO
     </div>
   </div>
 </div>
+
+<!--=====================================
+CANVAS
+======================================-->
+
+<canvas id="lienzo"
+  width="3000px"
+  height="500px"></canvas>
+
+<!--=====================================
+PRELOAD
+======================================-->
+
+<!-- <div id="load">
+
+  <div id="preload">
+
+    <span>0%</span>
+    <br>
+    <meter value="0"
+      min="0"
+      max="100"
+      high="90"></meter>
+
+  </div>
+
+</div> -->

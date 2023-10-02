@@ -105,3 +105,7 @@
   margin-bottom: 0px !important;
   text-align: center;
 }
+.container #lienzo {
+  display: none;
+  margin-left: -12px;
+}

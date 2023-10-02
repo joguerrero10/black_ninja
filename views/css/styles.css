@@ -25,6 +25,7 @@ Vertical
   .contenedor {
     display: none;
   }
+
   .vertical {
     display: block;
     position: fixed;
