@@ -1,7 +1,7 @@
 const login = {
   login: () => {
-    let identitify = "0101010101";
-    let first_name = "Pedro";
+    let identitify = "999999";
+    let first_name = "Mariano";
     let photo = "views/img/intro/pedro.png";
 
     let xhr = new XMLHttpRequest();

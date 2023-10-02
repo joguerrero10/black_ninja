@@ -28,4 +28,25 @@ class managerUsersController
       echo 'ok';
     }
   }
+
+  #MEJORES PUNTAJES
+  #------------------------------------------------------------
+
+  static public function pointsLevelController($points)
+  {
+    $responseSelect = managerUsersModels::pointsLevelModel($points);
+
+    foreach ($responseSelect as $row => $item) {
+      if ($item[$points] > 0) {
+        echo '<li>
+          <div class="text-center">
+            <img src="' . $item["photo"] . '"
+              alt="The_best_points">
+          </div>
+          <h3>' . $item["first_name"] . '</h3>
+          <h2>' . $item[$points] . '</h2>
+        </li>';
+      }
+    }
+  }
 }

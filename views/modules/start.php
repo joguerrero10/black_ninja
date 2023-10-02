@@ -22,12 +22,10 @@ INICIO
 	NIVEL 1
 	======================================-->
 
-  <div id="level1"
-    class="levels">
+  <div id="level1" class="levels">
     <div class="point"><?php echo $_SESSION['points_level1']; ?> pts</div>
 
-    <img src="views/img/intro/checkLevel1.svg"
-      alt="level1-check">
+    <img src="views/img/intro/checkLevel1.svg" alt="level1-check">
 
     <div class="btn-center">
       <button class="btn-start">Ingresar</button>
@@ -37,30 +35,10 @@ INICIO
       <h2>MEJORES PUNTAJES</h2>
 
       <ul>
-        <li>
-          <div class="text-center">
-            <img src="./views/img/intro/juan.png"
-              alt="">
-          </div>
-          <h3>Juan</h3>
-          <h2>100</h2>
-        </li>
-        <li>
-          <div class="text-center">
-            <img src="./views/img/intro/juan.png"
-              alt="">
-          </div>
-          <h3>Juan</h3>
-          <h2>100</h2>
-        </li>
-        <li>
-          <div class="text-center">
-            <img src="./views/img/intro/juan.png"
-              alt="">
-          </div>
-          <h3>Juan</h3>
-          <h2>100</h2>
-        </li>
+        <?php
+        $points_level_1 = new managerUsersController();
+        $points_level_1->pointsLevelController('points_level1');
+        ?>
       </ul>
     </div>
   </div>
@@ -68,8 +46,7 @@ INICIO
   <!--=====================================
 	NIVEL 2
 	======================================-->
-  <div id="level2"
-    class="levels">
+  <div id="level2" class="levels">
     <div class="point"> <?php echo $_SESSION['points_level2']; ?> pts</div>
 
     <?php
@@ -81,22 +58,27 @@ INICIO
     </div>
       ';
     } else {
-      echo '<img src="views/img/intro/blockLevel2.svg" alt="blockLevel2-check">';
+      echo '<img class="pb-2" src="views/img/intro/blockLevel2.svg" alt="blockLevel2-check">';
     }
 
     ?>
 
-
     <div class="points">
+      <h2>MEJORES PUNTAJES</h2>
 
+      <ul>
+        <?php
+        $points_level_1 = new managerUsersController();
+        $points_level_1->pointsLevelController('points_level2');
+        ?>
+      </ul>
     </div>
   </div>
 
   <!--=====================================
 	NIVEL 3
 	======================================-->
-  <div id="level3"
-    class="levels">
+  <div id="level3" class="levels">
     <div class="point"><?php echo $_SESSION['points_level3']; ?> pts</div>
 
     <?php
@@ -108,13 +90,20 @@ INICIO
     </div>
       ';
     } else {
-      echo '<img src="views/img/intro/blockLevel3.svg" alt="blockLevel3-check">';
+      echo '<img class="pb-2" src="views/img/intro/blockLevel3.svg" alt="blockLevel3-check">';
     }
 
     ?>
 
     <div class="points">
+      <h2>MEJORES PUNTAJES</h2>
 
+      <ul>
+        <?php
+        $points_level_1 = new managerUsersController();
+        $points_level_1->pointsLevelController('points_level3');
+        ?>
+      </ul>
     </div>
   </div>
 </div>

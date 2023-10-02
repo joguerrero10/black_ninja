@@ -1,10 +1,12 @@
 <?php
 require_once "ConnectionBD.php";
+
 class managerUsersModels
 {
 
   static public function SelectUsersModels($dataModels)
   {
+
     $pdo = ConnectionBD::cBD();
     $stmt = $pdo->prepare("SELECT id, first_name, photo, level1, points_level1, level2, points_level2, level3, points_level3  FROM users WHERE identitify = :identitify ");
     $stmt->bindParam(':identitify', $dataModels["identitify"], PDO::PARAM_INT);
@@ -30,6 +32,30 @@ class managerUsersModels
         echo "Registro insertado correctamente.";
       } else {
         echo "Error al insertar el registro.";
+      }
+
+      $pdo = null;
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
+  #SELECCIONAR PUNTAJES
+  #------------------------------------------------------------
+
+  static public function pointsLevelModel($points)
+  {
+
+    try {
+
+      $pdo = ConnectionBD::cBD();
+      $stmt = $pdo->prepare("SELECT first_name, photo, $points  FROM users ORDER BY $points DESC LIMIT 3");
+
+
+      if ($stmt->execute()) {
+        return $stmt->fetchAll();
+      } else {
+        echo "Error al encontrar el registro.";
       }
 
       $pdo = null;
