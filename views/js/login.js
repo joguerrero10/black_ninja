@@ -1,8 +1,8 @@
 const login = {
   login: () => {
-    let identitify = "111111";
-    let first_name = "Thiago";
-    let photo = "views/img/intro/julio.png";
+    let identitify = "0101010101";
+    let first_name = "Pedro";
+    let photo = "views/img/intro/pedro.png";
 
     let xhr = new XMLHttpRequest();
     let url = "views/ajax/users.php";

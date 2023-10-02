@@ -13,6 +13,7 @@ class managerUsersController
     }
 
     if ($responseSelect || $responseInsert == "ok") {
+      $responseSelect = managerUsersModels::SelectUsersModels($dataController);
       session_start();
       $_SESSION['validate'] = true;
       $_SESSION["first_name"] = $responseSelect["first_name"];

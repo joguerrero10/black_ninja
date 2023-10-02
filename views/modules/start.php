@@ -22,24 +22,54 @@ INICIO
 	NIVEL 1
 	======================================-->
 
-  <div id="level1" class="levels">
+  <div id="level1"
+    class="levels">
     <div class="point"><?php echo $_SESSION['points_level1']; ?> pts</div>
 
-    <img src="views/img/intro/checkLevel1.svg" alt="level1-check">
+    <img src="views/img/intro/checkLevel1.svg"
+      alt="level1-check">
 
     <div class="btn-center">
       <button class="btn-start">Ingresar</button>
     </div>
 
     <div class="points">
+      <h2>MEJORES PUNTAJES</h2>
 
+      <ul>
+        <li>
+          <div class="text-center">
+            <img src="./views/img/intro/juan.png"
+              alt="">
+          </div>
+          <h3>Juan</h3>
+          <h2>100</h2>
+        </li>
+        <li>
+          <div class="text-center">
+            <img src="./views/img/intro/juan.png"
+              alt="">
+          </div>
+          <h3>Juan</h3>
+          <h2>100</h2>
+        </li>
+        <li>
+          <div class="text-center">
+            <img src="./views/img/intro/juan.png"
+              alt="">
+          </div>
+          <h3>Juan</h3>
+          <h2>100</h2>
+        </li>
+      </ul>
     </div>
   </div>
 
   <!--=====================================
 	NIVEL 2
 	======================================-->
-  <div id="level2" class="levels">
+  <div id="level2"
+    class="levels">
     <div class="point"> <?php echo $_SESSION['points_level2']; ?> pts</div>
 
     <?php
@@ -65,7 +95,8 @@ INICIO
   <!--=====================================
 	NIVEL 3
 	======================================-->
-  <div id="level3" class="levels">
+  <div id="level3"
+    class="levels">
     <div class="point"><?php echo $_SESSION['points_level3']; ?> pts</div>
 
     <?php
@@ -81,8 +112,6 @@ INICIO
     }
 
     ?>
-
-
 
     <div class="points">
 
