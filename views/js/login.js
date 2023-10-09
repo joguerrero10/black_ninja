@@ -79,7 +79,7 @@ const login = {
 		=============================================*/
 
     data.plane2 = new Image();
-    data.plane2.src = "views/img/level" + level + "/plano3.png";
+    data.plane2.src = "views/img/level" + level + "/plano2.png";
     data.plane2.onload = function () {
       ctx.drawImage(
         data.plane2,
@@ -140,7 +140,7 @@ const login = {
 
     data.details = new Image();
     data.details.src = "views/img/level" + level + "/detalles.png";
-
+    let xhr_details;
     if (level === 1) {
       let xhr_details = new XMLHttpRequest();
       xhr_details.open("GET", "views/js/json/blocksDetailsLevel1.json", true);
@@ -156,7 +156,7 @@ const login = {
       xhr_details.open("GET", "views/js/json/blocksDetailsLevel3.json", true);
     }
 
-    xhr_details?.send();
+    xhr_details.send();
 
     xhr_details.onreadystatechange = function () {
       if (xhr_details.readyState == 4 && xhr_details.status == 200) {
@@ -210,7 +210,7 @@ const login = {
     };
 
     data.texturePlatform.onload = function () {
-      for (let i = 0; i < data.bloques.length; i++) {
+      for (let i = 0; i < data.blocks.length; i++) {
         ctx.drawImage(
           data.texturePlatform,
           data.blocks[i].x,
@@ -290,8 +290,6 @@ const login = {
     }
 
     function precarga(e) {
-      // setInterval(function(){
-
       numberFiles++;
       percentage = 100 / uploadFiles.length;
 
@@ -310,8 +308,6 @@ const login = {
           document.querySelector("#load").style.display = "none";
         }, 10);
       }
-
-      // },1000)
     }
   },
 };
