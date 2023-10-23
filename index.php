@@ -1,12 +1,9 @@
 <?php
-require 'vendor/autoload.php';
-require_once "./controllers/template.php";
-require_once "./controllers/users-controllers.php";
-require_once "./models/users-models.php";
 
-$envPath = './';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+require_once "controllers/template.php";
+require_once "controllers/usuarios.php";
+
+require_once "models/usuarios.php";
 
 $template = new TemplateController();
-$template->template();
+$template -> template();
