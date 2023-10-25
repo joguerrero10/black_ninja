@@ -64,29 +64,29 @@ let inicio = {
 
     datos.plano3 = new Image();
     datos.plano3.src = "views/img/nivel" + nivel + "/plano3.png";
-    datos.plano3.onload = function () {
-      ctx.drawImage(
-        datos.plano3,
-        0,
-        0,
-        datos.plano3.naturalWidth,
-        datos.plano3.naturalHeight
-      );
-      ctx.drawImage(
-        datos.plano3,
-        1000,
-        0,
-        datos.plano3.naturalWidth,
-        datos.plano3.naturalHeight
-      );
-      ctx.drawImage(
-        datos.plano3,
-        2000,
-        0,
-        datos.plano3.naturalWidth,
-        datos.plano3.naturalHeight
-      );
-    };
+    // datos.plano3.onload = function () {
+    //   ctx.drawImage(
+    //     datos.plano3,
+    //     0,
+    //     0,
+    //     datos.plano3.naturalWidth,
+    //     datos.plano3.naturalHeight
+    //   );
+    //   ctx.drawImage(
+    //     datos.plano3,
+    //     1000,
+    //     0,
+    //     datos.plano3.naturalWidth,
+    //     datos.plano3.naturalHeight
+    //   );
+    //   ctx.drawImage(
+    //     datos.plano3,
+    //     2000,
+    //     0,
+    //     datos.plano3.naturalWidth,
+    //     datos.plano3.naturalHeight
+    //   );
+    // };
 
     /*=============================================
 		PLANO 2
@@ -94,29 +94,29 @@ let inicio = {
 
     datos.plano2 = new Image();
     datos.plano2.src = "views/img/nivel" + nivel + "/plano2.png";
-    datos.plano2.onload = function () {
-      ctx.drawImage(
-        datos.plano2,
-        0,
-        0,
-        datos.plano2.naturalWidth,
-        datos.plano2.naturalHeight
-      );
-      ctx.drawImage(
-        datos.plano2,
-        1000,
-        0,
-        datos.plano2.naturalWidth,
-        datos.plano2.naturalHeight
-      );
-      ctx.drawImage(
-        datos.plano2,
-        2000,
-        0,
-        datos.plano2.naturalWidth,
-        datos.plano2.naturalHeight
-      );
-    };
+    // datos.plano2.onload = function () {
+    //   ctx.drawImage(
+    //     datos.plano2,
+    //     0,
+    //     0,
+    //     datos.plano2.naturalWidth,
+    //     datos.plano2.naturalHeight
+    //   );
+    //   ctx.drawImage(
+    //     datos.plano2,
+    //     1000,
+    //     0,
+    //     datos.plano2.naturalWidth,
+    //     datos.plano2.naturalHeight
+    //   );
+    //   ctx.drawImage(
+    //     datos.plano2,
+    //     2000,
+    //     0,
+    //     datos.plano2.naturalWidth,
+    //     datos.plano2.naturalHeight
+    //   );
+    // };
 
     /*=============================================
 		PLANO 1
@@ -124,29 +124,29 @@ let inicio = {
 
     datos.plano1 = new Image();
     datos.plano1.src = "views/img/nivel" + nivel + "/plano1.png";
-    datos.plano1.onload = function () {
-      ctx.drawImage(
-        datos.plano1,
-        0,
-        0,
-        datos.plano1.naturalWidth,
-        datos.plano1.naturalHeight
-      );
-      ctx.drawImage(
-        datos.plano1,
-        1000,
-        0,
-        datos.plano1.naturalWidth,
-        datos.plano1.naturalHeight
-      );
-      ctx.drawImage(
-        datos.plano1,
-        2000,
-        0,
-        datos.plano1.naturalWidth,
-        datos.plano1.naturalHeight
-      );
-    };
+    // datos.plano1.onload = function () {
+    //   ctx.drawImage(
+    //     datos.plano1,
+    //     0,
+    //     0,
+    //     datos.plano1.naturalWidth,
+    //     datos.plano1.naturalHeight
+    //   );
+    //   ctx.drawImage(
+    //     datos.plano1,
+    //     1000,
+    //     0,
+    //     datos.plano1.naturalWidth,
+    //     datos.plano1.naturalHeight
+    //   );
+    //   ctx.drawImage(
+    //     datos.plano1,
+    //     2000,
+    //     0,
+    //     datos.plano1.naturalWidth,
+    //     datos.plano1.naturalHeight
+    //   );
+    // };
 
     /*=============================================
 		DETALLES
@@ -188,17 +188,17 @@ let inicio = {
       }
     };
 
-    datos.detalles.onload = function () {
-      for (let i = 0; i < datos.bloquesDetalles.length; i++) {
-        ctx.drawImage(
-          datos.detalles,
-          datos.bloquesDetalles[i].x,
-          datos.bloquesDetalles[i].y,
-          datos.bloquesDetalles[i].ancho,
-          datos.bloquesDetalles[i].alto
-        );
-      }
-    };
+    // datos.detalles.onload = function () {
+    //   for (let i = 0; i < datos.bloquesDetalles.length; i++) {
+    //     ctx.drawImage(
+    //       datos.detalles,
+    //       datos.bloquesDetalles[i].x,
+    //       datos.bloquesDetalles[i].y,
+    //       datos.bloquesDetalles[i].ancho,
+    //       datos.bloquesDetalles[i].alto
+    //     );
+    //   }
+    // };
     /*=============================================
 		BLOQUES
 		=============================================*/
@@ -229,17 +229,17 @@ let inicio = {
       }
     };
 
-    datos.texturaPlataforma.onload = function () {
-      for (let i = 0; i < datos.bloques.length; i++) {
-        ctx.drawImage(
-          datos.texturaPlataforma,
-          datos.bloques[i].x,
-          datos.bloques[i].y,
-          datos.bloques[i].ancho,
-          datos.bloques[i].alto
-        );
-      }
-    };
+    // datos.texturaPlataforma.onload = function () {
+    //   for (let i = 0; i < datos.bloques.length; i++) {
+    //     ctx.drawImage(
+    //       datos.texturaPlataforma,
+    //       datos.bloques[i].x,
+    //       datos.bloques[i].y,
+    //       datos.bloques[i].ancho,
+    //       datos.bloques[i].alto
+    //     );
+    //   }
+    // };
 
     /*=============================================
 		JUGADOR
@@ -247,19 +247,19 @@ let inicio = {
 
     datos.imgJugador = new Image();
     datos.imgJugador.src = "views/img/jugador/stop_right.png";
-    datos.imgJugador.onload = function () {
-      ctx.drawImage(
-        datos.imgJugador,
-        0,
-        0,
-        100,
-        100,
-        datos.jugador_x,
-        datos.jugador_y,
-        datos.jugador_ancho,
-        datos.jugador_alto
-      );
-    };
+    // datos.imgJugador.onload = function () {
+    //   ctx.drawImage(
+    //     datos.imgJugador,
+    //     0,
+    //     0,
+    //     100,
+    //     100,
+    //     datos.jugador_x,
+    //     datos.jugador_y,
+    //     datos.jugador_ancho,
+    //     datos.jugador_alto
+    //   );
+    // };
 
     /*=============================================
 		PLANO 0
@@ -267,29 +267,29 @@ let inicio = {
 
     datos.plano0 = new Image();
     datos.plano0.src = "views/img/nivel" + nivel + "/plano0.png";
-    datos.plano0.onload = function () {
-      ctx.drawImage(
-        datos.plano0,
-        0,
-        0,
-        datos.plano0.naturalWidth,
-        datos.plano0.naturalHeight
-      );
-      ctx.drawImage(
-        datos.plano0,
-        1000,
-        0,
-        datos.plano0.naturalWidth,
-        datos.plano0.naturalHeight
-      );
-      ctx.drawImage(
-        datos.plano0,
-        2000,
-        0,
-        datos.plano0.naturalWidth,
-        datos.plano0.naturalHeight
-      );
-    };
+    // datos.plano0.onload = function () {
+    //   ctx.drawImage(
+    //     datos.plano0,
+    //     0,
+    //     0,
+    //     datos.plano0.naturalWidth,
+    //     datos.plano0.naturalHeight
+    //   );
+    //   ctx.drawImage(
+    //     datos.plano0,
+    //     1000,
+    //     0,
+    //     datos.plano0.naturalWidth,
+    //     datos.plano0.naturalHeight
+    //   );
+    //   ctx.drawImage(
+    //     datos.plano0,
+    //     2000,
+    //     0,
+    //     datos.plano0.naturalWidth,
+    //     datos.plano0.naturalHeight
+    //   );
+    // };
 
     /*=============================================
 		PRELOAD
@@ -321,13 +321,15 @@ let inicio = {
       );
       if (numeroArchivos == cargarArchivos.length) {
         document.querySelector("#lienzo").style.display = "block";
-        console.log("true");
 
         document.querySelector("#carga").style.opacity = 0;
 
         setTimeout(function () {
           document.querySelector("#carga").style.display = "none";
         }, 10000);
+
+        juego.teclado();
+        juego.tiempo();
       }
     }
   },
