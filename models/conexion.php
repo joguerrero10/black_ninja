@@ -8,8 +8,8 @@ class Conexion
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $databasename = "black_ninja";
-    $port = 4306;
+    $databasename = "blackninja";
+    $port = 3306;
 
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$databasename;port=$port", $username, $password);
