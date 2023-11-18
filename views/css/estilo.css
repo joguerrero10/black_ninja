@@ -11,7 +11,7 @@ body{
 	background-image:url(../img/intro/back.svg);
 	background-repeat: repeat-x;
 	background-position: top;
-	overflow-y:hidden;
+	overflow:hidden;
 }
 
 /*=============================================
@@ -188,6 +188,20 @@ CANVAS
 
 #contenedor #lienzo{
 	display:none;
+}
+
+#btnAmpliar{
+	display:none;
+	position:relative;
+	width:150px;
+	padding:10px 5px;
+	background:green;
+	color:white;
+	text-align:center;
+	line-height:20px;
+	border-radius:0px 0px 10px 10px;
+	cursor:pointer;
+	font-family: 'Patrick Hand', cursive;
 }
 
 /*=============================================

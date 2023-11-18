@@ -2,4 +2,4 @@ Options All -Indexes
 
 RewriteEngine on
 
-RewriteRule ^([a-zA-Z0-9-]*)$ index.php?validate=$1 [L]
+RewriteRule ^([a-zA-Z0-9-]*)$ index.php?validar=$1 [L]

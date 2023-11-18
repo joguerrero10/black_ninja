@@ -3,33 +3,73 @@
 require_once "../../controllers/usuarios.php";
 require_once "../../models/usuarios.php";
 
-class Ajax
-{
+class Ajax{
 
-  public $identitify;
-  public $first_name;
-  public $photo;
+	#REGISTRO DE USUARIO
+	#------------------------------------------------------------
 
-  public function gestorUsuariosAjax()
-  {
+	public $identificador;
+	public $primer_nombre;
+	public $foto;
 
-    $datos = array(
-      "identitify" => $this->identitify,
-      "first_name" => $this->first_name,
-      "photo" => $this->photo
-    );
+	public function gestorUsuariosAjax(){
 
-    $respuesta = GestorUsuariosController::guardarUsuariosController($datos);
+		$datos = array("identificador" => $this->identificador,
+					   "primer_nombre" => $this->primer_nombre,
+					   "foto" => $this->foto);
 
-    echo $respuesta;
-  }
+		$respuesta = GestorUsuariosController::guardarUsuariosController($datos);
+
+		echo $respuesta;
+
+	}
+
+	#PASO DE NIVELES
+	#------------------------------------------------------------
+
+	public $nivel;
+	public $puntaje;
+	public $numeroNivel;
+	public $id;
+
+	public function gestorPuntajesAjax(){
+
+		$datos = array("nivel" => $this->nivel,
+			           "puntaje" => $this->puntaje,
+			           "numeroNivel" => $this->numeroNivel,
+			           "id" => $this->id);
+
+		$respuesta = GestorUsuariosController::guardarPuntajesController($datos);
+
+		echo $respuesta;
+
+	}
+
 }
 
-if (isset($_POST["identitify"])) {
+#OBJETOS REGISTRO DE USUARIO
+#------------------------------------------------------------
 
-  $a = new Ajax();
-  $a->identitify = $_POST["identitify"];
-  $a->first_name = $_POST["first_name"];
-  $a->photo = $_POST["photo"];
-  $a->gestorUsuariosAjax();
+if(isset($_POST["identificador"])){
+
+	$a = new Ajax();
+	$a -> identificador = $_POST["identificador"];
+	$a -> primer_nombre = $_POST["primer_nombre"];
+	$a -> foto = $_POST["foto"];
+	$a -> gestorUsuariosAjax();
+
+}
+
+#OBJETO PASO DE NIVELES
+#------------------------------------------------------------
+if(isset($_POST["nivel"])){
+
+	$b = new Ajax();
+	$b -> nivel = $_POST["nivel"];
+	$b -> puntaje = $_POST["puntaje"];
+	$b -> numeroNivel = $_POST["numeroNivel"];
+	$b -> id = $_POST["id"];
+	$b -> gestorPuntajesAjax();
+
+
 }

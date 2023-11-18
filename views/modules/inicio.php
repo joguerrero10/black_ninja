@@ -2,11 +2,12 @@
 
 session_start();
 
-if (!$_SESSION["validate"]) {
+if(!$_SESSION["validar"]){
 
-  header("location:ingreso");
+	header("location:ingreso");
 
-  exit();
+	exit();
+
 }
 
 ?>
@@ -16,119 +17,121 @@ INICIO
 ======================================-->
 
 <div id="inicio">
+	
+	<div id="cerrarSesion"><a href="salir">Cerrar Sesión</a></div>
 
-  <div id="cerrarSesion"><a href="salir">Cerrar Sesión</a></div>
-
-  <h2 id="saludo">¡Hola <?php echo $_SESSION["first_name"];
-                        echo '<img style="border-radius:100%; margin-left:10px" width="30px" src="' . $_SESSION["photo"] . '">'
-                        ?> bienvenid@!</h2>
-
-  <!--=====================================
+	<h2 id="saludo">¡Hola <?php echo $_SESSION["primer_nombre"];
+								echo '<img style="border-radius:100%; margin-left:10px" width="30px" src="'.$_SESSION["foto"].'">'	 
+									 ?>  bienvenid@!</h2>
+	
+	<!--=====================================
 	NIVEL 1
 	======================================-->
-  <div id="nivel1" class="niveles">
+	<div id="nivel1" class="niveles">
+		
+		<div class="puntaje"><?php echo $_SESSION["puntaje_nivel1"]; ?> pts</div>
 
-    <div class="puntaje"><?php echo $_SESSION["points_level1"]; ?> pts</div>
+		<img src="views/img/intro/checkLevel1.svg">
 
-    <img src="views/img/intro/checkLevel1.svg">
+		<center><button onclick="inicio.elegirNivel(this)" nivel="1" id="<?php echo $_SESSION["id"]; ?>" >INGRESAR</button></center>
 
-    <center><button onclick="inicio.elegirNivel(this)" nivel="1">INGRESAR</button></center>
+		<div class="puntajes">
+			
+			<h2>MEJORES PUNTAJES</h2>
 
-    <div class="puntajes">
+			<ul>
 
-      <h2>MEJORES PUNTAJES</h2>
+			<?php
 
-      <ul>
+				$puntajes_nivel1 = new GestorUsuariosController();
+				$puntajes_nivel1 -> puntajesNivelController("puntaje_nivel1");
 
-        <?php
+			?>
 
-        $puntajes_nivel1 = new GestorUsuariosController();
-        $puntajes_nivel1->puntajesNivelController("points_level1");
+			</ul>
+		</div>
 
-        ?>
+	</div>
 
-      </ul>
-    </div>
-
-  </div>
-
-  <!--=====================================
+	<!--=====================================
 	NIVEL 2
 	======================================-->
-  <div id="nivel2" class="niveles">
+	<div id="nivel2" class="niveles">
+		
+		<div class="puntaje"><?php echo $_SESSION["puntaje_nivel2"]; ?> pts</div>
 
-    <div class="puntaje"><?php echo $_SESSION["points_level2"]; ?> pts</div>
+		<?php
 
-    <?php
+		if($_SESSION["nivel2"] == "ok"){
 
-    if ($_SESSION["level2"] == "ok") {
+			echo '<img src="views/img/intro/checkLevel2.svg">
+				  <center><button onclick="inicio.elegirNivel(this)" nivel="2" id="'.$_SESSION["id"].'">INGRESAR</button></center>';
 
-      echo '<img src="views/img/intro/checkLevel2.svg">
-				  <center><button onclick="inicio.elegirNivel(this)" nivel="2">INGRESAR</button></center>';
-    } else {
+		}else{
 
-      echo '<img src="views/img/intro/blockLevel2.svg">';
-    }
+			echo '<img src="views/img/intro/blockLevel2.svg">';
+		}
 
-    ?>
+		?>
 
-    <div class="puntajes">
+		<div class="puntajes">
+			
+			<h2>MEJORES PUNTAJES</h2>
 
-      <h2>MEJORES PUNTAJES</h2>
+			<ul>
 
-      <ul>
+			<?php
 
-        <?php
+				$puntajes_nivel1 = new GestorUsuariosController();
+				$puntajes_nivel1 -> puntajesNivelController("puntaje_nivel2");
 
-        $puntajes_nivel1 = new GestorUsuariosController();
-        $puntajes_nivel1->puntajesNivelController("points_level2");
+			?>
 
-        ?>
+			</ul>
 
-      </ul>
+		</div>
 
-    </div>
+	</div>
 
-  </div>
-
-  <!--=====================================
+	<!--=====================================
 	NIVEL 3
 	======================================-->
-  <div id="nivel3" class="niveles">
+	<div id="nivel3" class="niveles">
+		
+		<div class="puntaje"><?php echo $_SESSION["puntaje_nivel3"]; ?> pts</div>
 
-    <div class="puntaje"><?php echo $_SESSION["points_level3"]; ?> pts</div>
+		<?php
 
-    <?php
+		if($_SESSION["nivel3"] == "ok"){
 
-    if ($_SESSION["level3"] == "ok") {
+			echo '<img src="views/img/intro/checkLevel3.svg">
+				  <center><button onclick="inicio.elegirNivel(this)" nivel="3" id="'.$_SESSION["id"].'">INGRESAR</button></center>';
 
-      echo '<img src="views/img/intro/checkLevel3.svg">
-				  <center><button onclick="inicio.elegirNivel(this)" nivel="3">INGRESAR</button></center>';
-    } else {
+		}else{
 
-      echo '<img src="views/img/intro/blockLevel3.svg">';
-    }
+			echo '<img src="views/img/intro/blockLevel3.svg">';
+		}
 
-    ?>
+		?>
 
-    <div class="puntajes">
+		<div class="puntajes">
+			
+			<h2>MEJORES PUNTAJES</h2>
 
-      <h2>MEJORES PUNTAJES</h2>
+			<ul>
 
-      <ul>
+			<?php
 
-        <?php
+				$puntajes_nivel1 = new GestorUsuariosController();
+				$puntajes_nivel1 -> puntajesNivelController("puntaje_nivel3");
 
-        $puntajes_nivel1 = new GestorUsuariosController();
-        $puntajes_nivel1->puntajesNivelController("points_level3");
+			?>
 
-        ?>
+			</ul>
 
-      </ul>
+		</div>
 
-    </div>
-
-  </div>
+	</div>
 
 </div>
 
@@ -136,7 +139,9 @@ INICIO
 CANVAS
 ======================================-->
 
-<canvas id="lienzo" width="3000px" height="500px"></canvas>
+<canvas id="lienzo" width="1000px" height="500px"></canvas>
+
+<div id="btnAmpliar" onclick="ampliar()">AMPLIAR JUEGO</div>
 
 <!--=====================================
 PRELOAD
@@ -144,12 +149,12 @@ PRELOAD
 
 <div id="carga">
 
-  <div id="preload">
+<div id="preload">
+	
+	<span>0%</span>
+	<br>
+	<meter value="0" min="0" max="100" high="90"></meter>
 
-    <span>0%</span>
-    <br>
-    <meter value="0" min="0" max="100" high="90"></meter>
-
-  </div>
+</div>
 
 </div>
