@@ -39,53 +39,12 @@ var inicio = {
 
 	elegirNivel: function(event){
 
-		ampliar();
-
 		datos.nivel = event.getAttribute("nivel");
 		datos.id = event.getAttribute("id");
 
 		if(screenfull.enabled){
 			screenfull.request(document.querySelector("#contenedor"))
 		}
-
-		/*=============================================
-		SONIDOS
-		=============================================*/
-
-		datos.sBackground01=document.querySelector("#sBackground01");	
-    	datos.sBackground02=document.querySelector("#sBackground02");
-    	datos.sBackground03=document.querySelector("#sBackground03");
-    	datos.sColisionBalasEnemigo=document.querySelector("#sColisionBalasEnemigo");
-    	datos.sColisionTrampasEnemigos=document.querySelector("#sColisionTrampas-Enemigos");
-    	datos.sDisparoEnemigo=document.querySelector("#sDisparoEnemigo");
-    	datos.sDisparoJugador=document.querySelector("#sDisparoJugador");
-    	datos.sEnergia=document.querySelector("#sEnergia");
-    	datos.sMonedas=document.querySelector("#sMonedas");
-    	datos.sSaltoJugador=document.querySelector("#sSaltoJugador");
-    	datos.sPerderVida=document.querySelector("#sPerderVida");
-    	datos.sPerder=document.querySelector("#sPerder");
-    	datos.sGanar=document.querySelector("#sGanar");
-    	datos.sMonedero=document.querySelector("#sMonedero");
-    	datos.sPuntos=document.querySelector("#sPuntos");
-
-    	datos.listaSonidos = document.querySelectorAll("audio");
-
-    	for(var i = 0; i < datos.listaSonidos.length; i++){
-
-    		datos.listaSonidos[i].play();
-
-    		setTimeout(function(){
-
-    			for(var i = 0; i < datos.listaSonidos.length; i++){
-
-    			datos.listaSonidos[i].pause();
-    			datos.listaSonidos[i].muted = false;
-
-    			}
-
-    		},100) 
-
-    	}
 	
 		inicio.inicioNiveles(datos.nivel);
 
@@ -319,51 +278,11 @@ var inicio = {
 		}
 
 		/*=============================================
-		ENEMIGOS
-		=============================================*/
-
-		datos.imgEnemigos = new Image();
-		datos.imgEnemigos.src = "views/img/utileria/enemigos.png";	
-		datos.imgBalasEnemigos = new Image();
-		datos.imgBalasEnemigos.src = "views/img/utileria/balasEnemigos.png";	
-
-		for(var i = 1; i <= 3; i++){		
-
-			if(nivel == i){
-
-				var xhr_enemigos = new XMLHttpRequest();
-				xhr_enemigos.open("GET", "views/js/json/enemigosNivel"+i+".json", true)
-
-			}
-
-		}
-
-		xhr_enemigos.send();
-
-		xhr_enemigos.onreadystatechange = function(){
-
-			if ((xhr_enemigos.readyState == 4)&&(xhr_enemigos.status == 200)){
-
-				datos.posEnemigos = JSON.parse(xhr_enemigos.responseText)
-				datos.posBalasEnemigos = JSON.parse(xhr_enemigos.responseText)
-				
-
-			}
-		}
-
-		/*=============================================
 		JUGADOR
 		=============================================*/
 
 		datos.imgJugador = new Image();
 		datos.imgJugador.src = "views/img/jugador/stop_right.png";
-
-		/*=============================================
-		DISPARO JUGADOR
-		=============================================*/
-
-		datos.imgDisparoJugador = new Image();
-		datos.imgDisparoJugador.src = "views/img/utileria/balasJugador.png";
 
 		/*=============================================
 		PLANO 0
@@ -376,7 +295,7 @@ var inicio = {
 		PRELOAD
 		=============================================*/
 
-		var cargarArchivos = [datos.plano0, datos.texturaPlataforma, datos.detalles, datos.plano1, datos.plano2, datos.plano3, datos.imgJugador, datos.imgEnemigos, datos.imgBalasEnemigos, datos.imgDisparoJugador];
+		var cargarArchivos = [datos.plano0, datos.texturaPlataforma, datos.detalles, datos.plano1, datos.plano2, datos.plano3];
 		var numeroArchivos = 0;
 		var porcentaje = 0;
 
@@ -397,8 +316,6 @@ var inicio = {
 
 				document.querySelector("#lienzo").style.display = "block";
 				document.querySelector("#btnAmpliar").style.display = "block";
-
-				document.querySelector("#tablero").style.display = "block";
 
 				document.querySelector("#carga").style.opacity = 0; 
 

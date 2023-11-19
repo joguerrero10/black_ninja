@@ -70,16 +70,6 @@ var lienzo = {
 
 			ctx.drawImage(datos.imgMonedas[i], datos.sprite_x, 0, 100, 100, datos.posMonedas[i].x,  datos.posMonedas[i].y,  datos.posMonedas[i].ancho,  datos.posMonedas[i].alto);
 
-			if(datos.activarMonedaColisionada){
-
-				datos.imgMonedas[datos.monedaColisionada].src = "views/img/utileria/colisionesMonedas.png";
-				ctx.drawImage(datos.imgMonedas[datos.monedaColisionada], datos.sprite_x, 0, 100, 100, datos.posicionMonedaColisionadaX,  datos.posicionMonedaColisionadaY,  datos.posMonedas[i].ancho,  datos.posMonedas[i].alto);
-
-				setTimeout(function(){
-					datos.activarMonedaColisionada = false;
-				},500)
-
-			}
 		}
 
 
@@ -109,15 +99,6 @@ var lienzo = {
 		=============================================*/
 
 		ctx.drawImage(datos.imgJugador, datos.sprite_x, 0, 100, 90, datos.jugador_x, datos.jugador_y, datos.jugador_ancho, datos.jugador_alto);
-
-		/*=============================================
-		DISPARO JUGADOR
-		=============================================*/
-		if(datos.disparoDer || datos.disparoIzq){
-		
-		ctx.drawImage(datos.imgDisparoJugador, datos.sprite_x, 0, 100, 100, datos.disparo_x, datos.disparo_y, datos.disparo_ancho, datos.disparo_alto);
-		
-		}
 
 		/*=============================================
 		PLATAFORMAS

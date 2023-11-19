@@ -144,6 +144,149 @@ CANVAS
 <div id="btnAmpliar" onclick="ampliar()">AMPLIAR JUEGO</div>
 
 <!--=====================================
+TABLERO
+======================================-->
+
+<div id="tablero">
+	
+	<!--=====================================
+	VIDAS
+	======================================-->
+
+	<div id="vidas">
+		
+		<p>VIDAS: </p>
+		
+		<ul>
+			<li>
+				<img src="views/img/utileria/vidas.png">
+			</li>
+			<li>
+				<img src="views/img/utileria/vidas.png">
+			</li>
+			<li>
+				<img src="views/img/utileria/vidas.png">
+			</li>		
+		</ul>
+
+	</div>	
+
+	<!--=====================================
+	ENERGIA
+	======================================-->
+
+	<div id="energia">
+		
+		<p>ENERGÍA: </p>
+
+		<meter id="medidaEnergia" value="100" min="0" max="100" high="40"></meter>
+
+		<span>100%</span>
+
+	</div>
+
+	<!--=====================================
+	MONEDAS
+	======================================-->
+
+	<div id="monedas">
+		
+		<p>MONEDAS: </p>
+
+		<span>0</span>
+
+		<div id="spriteMoneda"></div>
+
+	</div>
+
+	<!--=====================================
+	SONIDO
+	======================================-->
+
+	<div id="sonido">
+		
+		<p>VOLUMEN: </p>
+
+		<ul>
+			<li onclick="juego.bajarVolumen(this)" volumen="0"></li>
+			<li onclick="juego.bajarVolumen(this)" volumen="0.3"></li>
+			<li onclick="juego.bajarVolumen(this)" volumen="1"></li>
+		</ul>
+
+	</div>
+
+	<!--=====================================
+	SALIDA
+	======================================-->
+
+	<div id="salida">
+		
+		<button onclick="juego.salirDelJuego()">SALIR</button>
+
+	</div>
+
+</div>
+
+<!--=====================================
+GAMEOVER
+======================================-->
+
+<div id="gameover">
+	
+	<h1>GAME OVER</h1>
+	
+</div>
+
+<!--=====================================
+FINAL
+======================================-->
+
+<div id="final">
+	
+	<center>
+		
+		<div>
+			<img src="views/img/intro/F-compartir.jpg" width="150px">
+		</div>
+
+	</center>
+
+	<h1>¡LO LOGRASTE!<br>
+	<span id="puntajeFinal">0</span> pts
+	</h1>
+
+	<ul>
+		<li>
+			<h3>MONEDAS</h3>
+			<div id="spriteMonedaFinal"></div>
+			<h4 id="finalMonedas">		
+				<span>100</span> pts
+			</h4>
+		</li>
+
+		<li>
+			<h3>ENERGÍA</h3>
+			<meter id="medidaEnergiaFinal" value="100" min="0" max="100" high="40" style="margin-top:40px"></meter>
+			<span id="totalEnergia">100%</span>
+			<h4 style="margin-top:20px" id="puntosEnergia">
+				<span>100</span> pts
+			</h4>
+		</li>
+
+		<li>
+			<h3>VIDAS</h3>
+				<ol>
+					<li><img src="views/img/utileria/vidas.png"></li>
+					<li><img src="views/img/utileria/vidas.png"></li>
+					<li><img src="views/img/utileria/vidas.png"></li>
+				</ol>
+			<h4 id="finalVidas"><span>100</span> pts</h4>
+		</li>
+	</ul>
+	
+</div>
+
+<!--=====================================
 PRELOAD
 ======================================-->
 
@@ -158,3 +301,23 @@ PRELOAD
 </div>
 
 </div>
+
+<!--=====================================
+SONIDOS
+======================================-->
+
+<audio src="views/mp3/background01.mp3" id="sBackground01" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/background02.mp3" id="sBackground02" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/background03.mp3" id="sBackground03" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/colisionBalasEnemigo.mp3" id="sColisionBalasEnemigo" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/colisionTrampas-Enemigos.mp3" id="sColisionTrampas-Enemigos" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/energia.mp3" id="sEnergia" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/disparoEnemigo.mp3" id="sDisparoEnemigo" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/disparoJugador.mp3" id="sDisparoJugador" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/monedas.mp3" id="sMonedas" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/saltoJugador.mp3" id="sSaltoJugador" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/perder.mp3" id="sPerder" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/perderVida.mp3" id="sPerderVida" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/ganar.mp3" id="sGanar" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/monedero.mp3" id="sMonedero" type="audio/mpeg" muted></audio>
+<audio src="views/mp3/puntos.mp3" id="sPuntos" type="audio/mpeg" muted></audio>

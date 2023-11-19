@@ -4,48 +4,6 @@ METODOS DEL OBJETO JUEGO
 
 var juego = {
 
-	
-	bajarVolumen: function(event){
-
-		/*=============================================
-		CONTROLES DEL SONIDO
-		=============================================*/
-
-		var volumen = event.getAttribute("volumen");
-
-		var botonesSonido = document.querySelectorAll("#sonido ul li");
-
-		for(var i = 0;  i < datos.listaSonidos.length; i++){
-
-			datos.listaSonidos[i].volume = volumen;
-
-		}
-
-		if(volumen == 0){
-
-			for(var i = 0; i < botonesSonido.length; i++){
-
-				botonesSonido[i].style.opacity = .5;
-			}
-			
-		}else if(volumen == 0.3){
-
-			botonesSonido[0].style.opacity = 1;
-			botonesSonido[1].style.opacity = 1;
-			botonesSonido[2].style.opacity = .5;
-
-		}else{
-
-			for(var i = 0; i < botonesSonido.length; i++){
-
-				botonesSonido[i].style.opacity = 1;
-
-			}
-		
-		}
-
-	},
-
 	teclado: function(){
 
 		/*=============================================
@@ -65,15 +23,7 @@ var juego = {
 		tecla.preventDefault();
 		if(tecla.keyCode == 37){datos.izquierda = true;}
 		if(tecla.keyCode == 39){datos.derecha = true;}
-		if(tecla.keyCode == 38){datos.salto = true; datos.sSaltoJugador.play();}
-		if(tecla.keyCode == 32){datos.disparo = true;
-								datos.disparo_y = datos.jugador_y;
-								datos.movDisparoJugador = 0;
-								datos.imgDisparoJugador.src = "views/img/utileria/balasJugador.png";
-								datos.disparo_ancho = 15;
-								datos.disparo_alto = 15;
-								datos.sDisparoJugador.play();
-							}
+		if(tecla.keyCode == 38){datos.salto = true;}
 
 	},
 
@@ -86,7 +36,6 @@ var juego = {
 		if(tecla.keyCode == 37){datos.izquierda = false; datos.imgJugador.src = "views/img/jugador/stop_left.png";}
 		if(tecla.keyCode == 39){datos.derecha = false; 	datos.imgJugador.src = "views/img/jugador/stop_right.png";}
 		if(tecla.keyCode == 38){datos.salto = false;}
-		if(tecla.keyCode == 32){datos.disparo = false;}
 
 	},
 
@@ -97,14 +46,6 @@ var juego = {
 		=============================================*/	
 
 		lienzo.canvas();
-
-		/*=============================================
-		SONIDO NIVEL
-		=============================================*/
-
-		if(datos.nivel == 1){datos.sBackground01.play(); datos.sBackground01.loop = true}
-		if(datos.nivel == 2){datos.sBackground02.play(); datos.sBackground02.loop = true}
-		if(datos.nivel == 3){datos.sBackground03.play(); datos.sBackground03.loop = true}
 
 		/*=============================================
 		CICLO DEL SPRITE
@@ -192,9 +133,7 @@ var juego = {
 		MOVIMIENTO IZQUIERDA
 		=============================================*/	
 
-		if(datos.izquierda){
-
-			datos.direccionJugador = "izquierda";			
+		if(datos.izquierda){			
 
 			if(datos.desplazamientoEscenario >= 0){
 
@@ -235,8 +174,6 @@ var juego = {
 		MOVIMIENTO DERECHA
 		=============================================*/	
 		if(datos.derecha){
-
-			datos.direccionJugador = "derecha";	
 
 			if(datos.desplazamientoEscenario <= datos.limiteEscenario){
 
@@ -365,7 +302,6 @@ var juego = {
 			if(datos.salto && datos.gravedad == 0 && datos.jugador_y == datos.plataforma[i].y - datos.jugador_alto){
 
 				datos.gravedad = datos.alturaSalto;
-
 			}
 
 
@@ -399,21 +335,17 @@ var juego = {
 
 			if(colisionMonedas()){
 
-				datos.sMonedas.play();
+				datos.imgMonedas[i].src = "views/img/utileria/colisionesMonedas.png";
+				datos.posMonedas[i].y --;
 
-				datos.activarMonedaColisionada = true;
+				var monedaColisionada = i;
 
-				datos.monedaColisionada = i;
+				setTimeout(function(){
 
-				datos.posicionMonedaColisionadaX = datos.posMonedas[i].x;
-				datos.posicionMonedaColisionadaY = datos.posMonedas[i].y;
-				
-				datos.posMonedas[i].x = -500;
-				datos.posMonedas[i].y = -500;
+					datos.posMonedas[monedaColisionada].x = -500;
+					datos.posMonedas[monedaColisionada].y = -500;
 
-				datos.contadorMonedas += 10;
-
-				document.querySelector("#monedas span").innerHTML = datos.contadorMonedas;
+				}, 500)
 
 			}
 
@@ -447,19 +379,8 @@ var juego = {
 
 			if(colisionTrampas()){
 
-				datos.sColisionTrampasEnemigos.play();
-				datos.sEnergia.play();
-
 				datos.imgTrampas[i].src = "views/img/utileria/colisionesTrampas.png";
 				datos.imgJugador.src = "views/img/jugador/colision_trampa.png";
-				datos.energia --;
-				document.querySelector("#energia meter").value = datos.energia;
-				document.querySelector("#energia span").innerHTML = datos.energia +"%";	
-
-				if(datos.energia <= 0){
-
-					datos.reset = true;
-				}		
 			
 			}else{
 
@@ -631,18 +552,6 @@ var juego = {
 
 			if(colisionBalasEnemigos()){
 
-				datos.sColisionTrampasEnemigos.play();
-				datos.sEnergia.play();
-
-				datos.energia --;
-				document.querySelector("#energia meter").value = datos.energia;
-				document.querySelector("#energia span").innerHTML = datos.energia +"%";	
-
-				if(datos.energia <= 0){
-
-					datos.reset = true;
-				}		
-
 				datos.imgJugador.src = "views/img/jugador/colision_trampa.png";
 				datos.imgBalasEnemigos.src = "views/img/utileria/colisionesBalasEnemigos.png";
 
@@ -652,95 +561,6 @@ var juego = {
 					datos.imgBalasEnemigos.src = "views/img/utileria/balasEnemigos.png";
 
 				},100)
-				
-			}
-		}
-
-		/*=============================================
-		DISPAROS DEL JUGADOR
-		=============================================*/	
-
-		if(datos.disparo){
-
-			datos.validarDisparo = true;
-
-		}
-
-		if(datos.validarDisparo){
-
-		
-			if(datos.direccionJugador == "izquierda"){
-
-				datos.disparoIzq = true;
-		        datos.disparoDer = false;
-
-			}
-			else{
-
-				datos.disparoIzq = false;
-		        datos.disparoDer = true;
-
-			}
-
-		}
-
-		if(datos.disparoIzq){
-
-			datos.validarDisparo = false;
-			datos.disparo_x = datos.jugador_x + datos.movDisparoJugador;
-			datos.movDisparoJugador -= datos.velocidadDisparoJugador;
-		}
-
-		if(datos.disparoDer){
-
-			datos.validarDisparo = false;
-			datos.disparo_x = datos.jugador_x + datos.movDisparoJugador;
-			datos.movDisparoJugador += datos.velocidadDisparoJugador;
-		}
-
-		/*=============================================
-		COLISIONES BALAS ENEMIGOS CON DISPARO JUGADOR
-		=============================================*/
-
-		for(var i = 0; i < datos.posBalasEnemigos.length; i++){
-
-			function colisionDisparoJugador(){
-
-				//No colisión con Trampas de Arriba hacia Abajo
-				if((datos.disparo_y + datos.disparo_alto) < datos.posBalasEnemigos[i].y){return false}
-
-				//No colisión con Trampas de Abajo hacia Arriba
-				if(datos.disparo_y > (datos.posBalasEnemigos[i].y + datos.posBalasEnemigos[i].alto)){return false}
-
-				//No colisión con Trampas de Izquierda a Derecha
-				if((datos.disparo_x + datos.disparo_ancho) < datos.posBalasEnemigos[i].x){return false}
-
-				//No colisión con Trampas de Derecha a Izquierda
-				if(datos.disparo_x > (datos.posBalasEnemigos[i].x + datos.posBalasEnemigos[i].ancho)){return false}
-
-				return true;
-
-			}
-
-			colisionDisparoJugador();
-
-			if(colisionDisparoJugador()){
-
-				datos.sColisionBalasEnemigo.play();
-
-				datos.imgDisparoJugador.src = "views/img/utileria/colisionesBalas.png";
-
-				datos.posBalasEnemigos[i].x = -500;
-				datos.posBalasEnemigos[i].y = -500;
-
-				datos.disparo_ancho = 50;
-				datos.disparo_alto = 50;
-
-				setTimeout(function(){
-
-					datos.disparo_y = -500;
-
-				},500)
 				
 			}
 		}
@@ -760,69 +580,12 @@ var juego = {
 
 		if(datos.reset){
 
-			datos.sPerderVida.play();
-
 			datos.reset = false;
 			datos.gravedad = 0;
 			datos.desplazamientoEscenario = 0;
 			datos.movimiento = 0;
 			datos.jugador_y = 200;
 			jugador_x = 70;
-
-			/*=============================================
-			RESET CONTADOR MONEDAS
-			=============================================*/
-			datos.contadorMonedas = 0;
-			document.querySelector("#monedas span").innerHTML = datos.contadorMonedas;
-
-			/*=============================================
-			RESET ENERGÍA
-			=============================================*/
-			datos.energia = 100;
-			document.querySelector("#energia meter").value = datos.energia;
-			document.querySelector("#energia span").innerHTML = datos.energia +"%";
-
-			/*=============================================
-			PERDIENDO VIDAS
-			=============================================*/
-
-			datos.vidas = datos.vidas -1;
-
-			if(datos.vidas == 2){
-
-				document.querySelector("#vidas ul li:nth-child(3)").innerHTML = "X";
-
-			}
-
-			if(datos.vidas == 1){
-
-				document.querySelector("#vidas ul li:nth-child(2)").innerHTML = "X";
-
-			}
-
-			if(datos.vidas == 0){
-
-				if(datos.nivel == 1){datos.sBackground01.volume = 0;}
-				if(datos.nivel == 2){datos.sBackground02.volume = 0;}
-				if(datos.nivel == 3){datos.sBackground03.volume = 0;}
-
-				datos.sColisionTrampasEnemigos.volume = 0;
-
-				datos.sPerder.play();
-
-				document.querySelector("#vidas ul li:nth-child(1)").innerHTML = "X";
-				
-				document.querySelector("#gameover").style.display = "block";
-
-				cancelAnimationFrame(animacion);
-
-				setTimeout(function(){
-
-					window.location.reload();
-
-				},5000)
-
-			}
 
 			/*=============================================
 			RESET PLATAFORMA
@@ -969,7 +732,7 @@ var juego = {
 
 					datos.posEnemigos = JSON.parse(xhr_enemigos.responseText)
 					datos.posBalasEnemigos = JSON.parse(xhr_enemigos.responseText)
-			
+					console.log("datos.posBalasEnemigos", datos.posBalasEnemigos);
 
 				}
 			}
@@ -990,95 +753,30 @@ var juego = {
 
 			cancelAnimationFrame(animacion);
 
-			datos.sGanar.play();
+			var xhr = new XMLHttpRequest();
+			var nivel = "ok";
+			var puntaje = "200";
+			var numeroNivel = datos.nivel;
+			var id = datos.id;
+			var url = "views/ajax/usuarios.php";
+			xhr.open("POST", url, true); 
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send("nivel=" + nivel + "& puntaje=" + puntaje + "& numeroNivel=" + numeroNivel + "& id=" + id);
 
-			if(datos.nivel == 1){datos.sBackground01.pause();}
-			if(datos.nivel == 2){datos.sBackground02.pause();}
-			if(datos.nivel == 3){datos.sBackground03.pause();}
+			xhr.onreadystatechange = function(){
 
-			document.querySelector("#final").style.display = "block";
+				if ((xhr.readyState == 4) && (xhr.status == 200)){
 
-			document.querySelector("#finalMonedas span").innerHTML = datos.contadorMonedas;
-			document.querySelector("#medidaEnergiaFinal").value = datos.energia;
-			document.querySelector("#totalEnergia").innerHTML = datos.energia + "%";
+					console.log("xhr.responseText", xhr.responseText);
 
-			var puntosEnergia = 100 - datos.energia;
-			document.querySelector("#puntosEnergia span").innerHTML = "-"+puntosEnergia;
-
-			var puntosVidas = 0;
-			if(datos.vidas == 3){
-				puntosVidas = 0;
-			}
-			if(datos.vidas == 2){
-				puntosVidas = 10;
-				 document.querySelector("#final ol li:nth-child(3)").innerHTML = "X";
-			}
-			if(datos.vidas == 1){
-				 puntosVidas = 20;
-				 document.querySelector("#final ol li:nth-child(2)").innerHTML = "X";
-			     document.querySelector("#final ol li:nth-child(3)").innerHTML = "X";
-			}
-
-			document.querySelector("#finalVidas span").innerHTML = "-"+puntosVidas;
-
-			datos.puntaje = datos.contadorMonedas - (puntosEnergia + puntosVidas);
-
-			datos.incrementoPuntaje = 0;
-
-			var intervalo = setInterval(function(){
-
-				if(datos.incrementoPuntaje > datos.puntaje){
-
-					datos.incrementoPuntaje = datos.puntaje;
-					document.querySelector("#puntajeFinal").innerHTML = datos.puntaje;
-					datos.sPuntos.play();
-					datos.sMonedero.pause();
-					clearInterval(intervalo);
-
-					setTimeout(function(){
-
-					    var xhr = new XMLHttpRequest();
-						var nivel = "ok";
-						var puntaje = datos.puntaje;
-						var numeroNivel = datos.nivel;
-						var id = datos.id;
-						var url = "views/ajax/usuarios.php";
-						xhr.open("POST", url, true); 
-						xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-						xhr.send("nivel=" + nivel + "& puntaje=" + puntaje + "& numeroNivel=" + numeroNivel + "& id=" + id);
-
-						xhr.onreadystatechange = function(){
-
-							if ((xhr.readyState == 4) && (xhr.status == 200)){
-
-								console.log("xhr.responseText", xhr.responseText);
-
-								if(xhr.responseText == "ok"){	
-									
-										window.location = "inicio";
-								}
-							}
-						}
-
-					},3000)
-
-				}else{
-
-					datos.incrementoPuntaje++
-					datos.sMonedero.play();
-					document.querySelector("#puntajeFinal").innerHTML = datos.incrementoPuntaje;
-
-				}
-
-			},16)
+					if(xhr.responseText == "ok"){	
 						
+							window.location = "inicio";
+					}
+				}
+			}
+			
 		}
-
-	},
-
-	salirDelJuego: function(){
-
-		window.location.reload();
 
 	}
 

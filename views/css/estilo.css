@@ -205,6 +205,301 @@ CANVAS
 }
 
 /*=============================================
+TABLERO
+=============================================*/
+
+#contenedor #tablero{
+	display:none;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1000px;
+	height:60px;
+	background:rgba(0,0,0,.5);
+	font-family: 'Patrick Hand', cursive;
+
+}
+
+/*=============================================
+VIDAS
+=============================================*/
+
+#contenedor #tablero #vidas{
+	position:absolute;
+	top:0;
+	left:0;
+	width:220px;
+	height:60px;	
+	color:white;
+	font-size:20px;	
+}
+
+#contenedor #tablero #vidas p{
+	float:left;
+	line-height:60px;
+	padding-left:10px;
+	width:50px;
+	font-weight: bold;
+}
+
+#contenedor #tablero #vidas ul{
+	float:left;
+	width:140px;
+	height:70px;
+	margin-left:10px;
+}
+
+#contenedor #tablero #vidas ul li{
+	margin:8px 2px;
+	float:left;
+	width:40px;
+	height:40px;
+	border-radius:100%;
+	line-height:40px;
+	background: rgba(255,255,255,.5);
+	text-align: center;
+}
+
+#contenedor #tablero #vidas ul li img{
+	padding-top:7px;
+	width:60%;
+}
+
+/*=============================================
+ENERGÍA
+=============================================*/
+
+#contenedor #tablero #energia{
+	position:absolute;
+	top:0px;
+	left:220px;
+	width:340px;
+	height:60px;	
+	color:white;
+	font-size:20px;
+}
+
+#contenedor #tablero #energia p{
+	float:left;
+	line-height:60px;
+	padding-left:10px;
+	width:50px;
+	font-weight: bold;
+}
+
+#contenedor #tablero #energia meter{
+	float:left;
+	width:200px;
+	margin-top:20px;
+	margin-left:30px;
+}
+
+#contenedor #tablero #energia span{
+	float:left;
+	line-height:60px;
+	padding-left:5px;
+}
+
+/*=============================================
+MONEDAS
+=============================================*/
+
+#contenedor #tablero #monedas{
+	position:absolute;
+	top:0px;
+	left:560px;
+	width:200px;
+	height:60px;	
+	color:white;
+	font-size:20px;
+}
+
+#contenedor #tablero #monedas p{
+	float:left;
+	line-height:60px;
+	padding-left:20px;
+	width:50px;
+	font-weight: bold;
+}
+
+#contenedor #tablero #monedas span{
+	float:left;
+	line-height:60px;
+	padding-left:30px;
+	font-weight: bold;
+}
+
+#contenedor #tablero #spriteMoneda{
+	float:left;
+	margin-top:5px;
+	margin-left:10px;
+	width:50px;
+	height: 50px;
+	background-image: url(../img/utileria/monedas.png);
+	background-position: 0px;
+	background-size: cover;
+}
+
+/*=============================================
+SONIDO
+=============================================*/
+
+#contenedor #tablero #sonido{
+	position:absolute;
+	top:0px;
+	right:80px;
+	width:150px;
+	height:60px;	
+	color:white;
+	font-size:20px;
+}
+
+#contenedor #tablero #sonido p{
+	float:left;
+	line-height:60px;
+	padding-left:5px;
+	width:50px;
+	font-weight: bold;
+}
+
+#contenedor #tablero #sonido ul{
+	float:left;
+	width:65px;
+	height:70px;
+	margin-left:30px;
+}
+
+#contenedor #tablero #sonido ul li{
+	float:left;
+	width:8px;
+	height:20px;
+	background:white;
+	margin:19px 3px;
+	cursor:pointer;
+}
+
+#contenedor #tablero #sonido ul li:first-child{
+	height:7px;
+	margin-top:32px;
+}
+
+#contenedor #tablero #sonido ul li:nth-child(2){
+	height:14px;
+	margin-top:25px;
+}
+
+/*=============================================
+SALIDA
+=============================================*/
+
+#contenedor #tablero #salida{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:80px;
+	height:60px;	
+	color:white;
+	font-size:20px;
+	text-align: center;
+}
+
+#contenedor #tablero #salida button{
+	width:50px;
+	font-weight: bold;
+	border:0;
+	margin-top:15px;
+	padding:5px;
+	background:black;
+	color:white;
+	font-family: 'Patrick Hand', cursive;
+	cursor:pointer;
+	border-radius:2px;
+}
+
+/*=============================================
+GAMEOVER
+=============================================*/
+#contenedor #gameover{
+	display:none;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1000px;
+	height:500px;
+	z-index:1;
+	background:rgba(0,0,0,1);
+	font-family: 'Patrick Hand', cursive;
+	color:white;
+}
+
+#contenedor #gameover h1{
+	line-height:500px;
+	text-align:center;
+}
+
+/*=============================================
+FINAL
+=============================================*/
+#contenedor #final{
+	display:none;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1000px;
+	height:500px;
+	z-index:1;
+	background:rgba(0,0,0,.9);
+	font-family: 'Patrick Hand', cursive;
+	color:white;
+}
+
+#contenedor #final h1{
+	margin-top:2%;
+	text-align:center;
+	font-size:55px;
+}
+
+#contenedor #final ul{
+	position:absolute;
+	width:80%;
+	height:200px;
+	top:50%;
+	left:10%;
+}
+
+#contenedor #final ul li{
+	float:left;
+	padding:20px 0;
+	height:150px;
+	width:30%;
+	margin:0px 1%;
+	text-align:center;
+	font-size:20px;
+	background:rgba(100,0,0,.5);
+	border-radius:20px;
+}
+
+#contenedor #final #spriteMonedaFinal{
+	position: relative;
+	left:50%;
+	margin-left:-40px;
+	width:80px;
+	height: 80px;
+	background-image: url(../img/utileria/monedas.png);
+	background-position: 0px;
+	background-size: cover;
+}
+
+#contenedor #final ul li ol li{
+	background: rgba(0,0,0,0);
+	height:45px;
+}
+
+#contenedor #final ul li ol li img{
+	width:60%;
+}
+
+/*=============================================
 PRELOAD
 =============================================*/
 

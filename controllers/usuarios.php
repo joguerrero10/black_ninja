@@ -88,7 +88,7 @@ class GestorUsuariosController{
 			                     "puntaje_nivel"=>"puntaje_nivel".$datos["numeroNivel"],
 			                     "id"=>$datos["id"] );
 
-		$respuesta = GestorUsuariosModel::guardarPuntajesModel($datosController, "usuarios");
+		$respuesta = GestorUsuariosModel::guardarPuntajesModel($datosController, "usuarios");	
 
 		if($respuesta == "ok"){
 

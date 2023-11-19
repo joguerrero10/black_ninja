@@ -1,6 +1,10 @@
 var contenedor = document.querySelector("#contenedor");
 var ampliarLienzo = document.querySelector("#lienzo");
 var btnAmpliar = document.querySelector("#btnAmpliar");
+var ampliarTablero = document.querySelector("#tablero");
+var ampliarPreload = document.querySelector("#carga");
+var ampliarFinal = document.querySelector("#final");
+var ampliarGameOver = document.querySelector("#gameover");
 
 function ampliar(){
 
@@ -8,13 +12,24 @@ function ampliar(){
 	contenedor.style.height = "100vh";
 	contenedor.style.margin = "0";
 
+	ampliarTablero.style.width = "100%";
+
 	ampliarLienzo.style.width = "100%";
 	ampliarLienzo.style.height = "100vh";
+
+	ampliarPreload.style.width = "100%";
+	ampliarPreload.style.height = "100vh";
+
+	ampliarFinal.style.width = "100%";
+	ampliarFinal.style.height = "100vh";
+
+	ampliarGameOver.style.width = "100%";
+	ampliarGameOver.style.height = "100vh";
 
 	btnAmpliar.innerHTML = "REDUCIR JUEGO";
 	btnAmpliar.style.position = "fixed";
 	btnAmpliar.style.zIndex = "1";
-	btnAmpliar.style.top = "0px";
+	btnAmpliar.style.top = "60px";
 	btnAmpliar.style.left = "10px";
 
 	btnAmpliar.setAttribute("onclick","reducir()");	
@@ -28,6 +43,15 @@ function reducir(){
 
 	ampliarLienzo.style.width = "1000px";
 	ampliarLienzo.style.height = "500px";
+
+	ampliarPreload.style.width = "1000px";
+	ampliarPreload.style.height = "500px";
+
+	ampliarFinal.style.width = "1000px";
+	ampliarFinal.style.height = "500px";
+
+	ampliarGameOver.style.width = "1000px";
+	ampliarGameOver.style.height = "500px";
 
 	btnAmpliar.innerHTML = "AMPLIAR JUEGO";
 	btnAmpliar.style.position = "relative";

@@ -39,53 +39,12 @@ var inicio = {
 
 	elegirNivel: function(event){
 
-		ampliar();
-
 		datos.nivel = event.getAttribute("nivel");
 		datos.id = event.getAttribute("id");
 
 		if(screenfull.enabled){
 			screenfull.request(document.querySelector("#contenedor"))
 		}
-
-		/*=============================================
-		SONIDOS
-		=============================================*/
-
-		datos.sBackground01=document.querySelector("#sBackground01");	
-    	datos.sBackground02=document.querySelector("#sBackground02");
-    	datos.sBackground03=document.querySelector("#sBackground03");
-    	datos.sColisionBalasEnemigo=document.querySelector("#sColisionBalasEnemigo");
-    	datos.sColisionTrampasEnemigos=document.querySelector("#sColisionTrampas-Enemigos");
-    	datos.sDisparoEnemigo=document.querySelector("#sDisparoEnemigo");
-    	datos.sDisparoJugador=document.querySelector("#sDisparoJugador");
-    	datos.sEnergia=document.querySelector("#sEnergia");
-    	datos.sMonedas=document.querySelector("#sMonedas");
-    	datos.sSaltoJugador=document.querySelector("#sSaltoJugador");
-    	datos.sPerderVida=document.querySelector("#sPerderVida");
-    	datos.sPerder=document.querySelector("#sPerder");
-    	datos.sGanar=document.querySelector("#sGanar");
-    	datos.sMonedero=document.querySelector("#sMonedero");
-    	datos.sPuntos=document.querySelector("#sPuntos");
-
-    	datos.listaSonidos = document.querySelectorAll("audio");
-
-    	for(var i = 0; i < datos.listaSonidos.length; i++){
-
-    		datos.listaSonidos[i].play();
-
-    		setTimeout(function(){
-
-    			for(var i = 0; i < datos.listaSonidos.length; i++){
-
-    			datos.listaSonidos[i].pause();
-    			datos.listaSonidos[i].muted = false;
-
-    			}
-
-    		},100) 
-
-    	}
 	
 		inicio.inicioNiveles(datos.nivel);
 
@@ -346,7 +305,7 @@ var inicio = {
 
 				datos.posEnemigos = JSON.parse(xhr_enemigos.responseText)
 				datos.posBalasEnemigos = JSON.parse(xhr_enemigos.responseText)
-				
+				console.log("datos.posBalasEnemigos", datos.posBalasEnemigos);
 
 			}
 		}
@@ -376,7 +335,7 @@ var inicio = {
 		PRELOAD
 		=============================================*/
 
-		var cargarArchivos = [datos.plano0, datos.texturaPlataforma, datos.detalles, datos.plano1, datos.plano2, datos.plano3, datos.imgJugador, datos.imgEnemigos, datos.imgBalasEnemigos, datos.imgDisparoJugador];
+		var cargarArchivos = [datos.plano0, datos.texturaPlataforma, datos.detalles, datos.plano1, datos.plano2, datos.plano3, datos.imgJugador, datos.imgEnemigos, datos.imgBalasEnemigos];
 		var numeroArchivos = 0;
 		var porcentaje = 0;
 
@@ -397,8 +356,6 @@ var inicio = {
 
 				document.querySelector("#lienzo").style.display = "block";
 				document.querySelector("#btnAmpliar").style.display = "block";
-
-				document.querySelector("#tablero").style.display = "block";
 
 				document.querySelector("#carga").style.opacity = 0; 
 
