@@ -18,7 +18,7 @@ INICIO
 
 <div id="inicio">
 	
-	<div id="cerrarSesion"><a href="salir">Cerrar Sesión</a></div>
+	<div id="cerrarSesion" onclick="inicio.cerrarFacebook()">Cerrar Sesión</div>
 
 	<h2 id="saludo">¡Hola <?php echo $_SESSION["primer_nombre"];
 								echo '<img style="border-radius:100%; margin-left:10px" width="30px" src="'.$_SESSION["foto"].'">'	 
@@ -144,6 +144,18 @@ CANVAS
 <div id="btnAmpliar" onclick="ampliar()">AMPLIAR JUEGO</div>
 
 <!--=====================================
+CONTROLES DISPOSITIVO
+======================================-->
+<div id="controles">
+	
+	<div id="izquierda"></div>
+	<div id="derecha"></div>	
+	<div id="disparo"></div>
+	<div id="arriba"></div>
+
+</div>
+
+<!--=====================================
 TABLERO
 ======================================-->
 
@@ -179,7 +191,7 @@ TABLERO
 		
 		<p>ENERGÍA: </p>
 
-		<meter id="medidaEnergia" value="100" min="0" max="100" high="40"></meter>
+		<progress id="medidaEnergia" value="100" min="0" max="100" high="40"></progress>
 
 		<span>100%</span>
 
@@ -245,7 +257,7 @@ FINAL
 	
 	<center>
 		
-		<div>
+		<div id="btnCompartir" onclick="inicio.compartirFacebook(this)" nombre="<?php echo $_SESSION["primer_nombre"];?>">
 			<img src="views/img/intro/F-compartir.jpg" width="150px">
 		</div>
 
@@ -266,7 +278,7 @@ FINAL
 
 		<li>
 			<h3>ENERGÍA</h3>
-			<meter id="medidaEnergiaFinal" value="100" min="0" max="100" high="40" style="margin-top:40px"></meter>
+			<progress id="medidaEnergiaFinal" value="100" min="0" max="100" high="40" style="margin-top:40px"></progress>
 			<span id="totalEnergia">100%</span>
 			<h4 style="margin-top:20px" id="puntosEnergia">
 				<span>100</span> pts
@@ -296,7 +308,7 @@ PRELOAD
 	
 	<span>0%</span>
 	<br>
-	<meter value="0" min="0" max="100" high="90"></meter>
+	<progress value="0" min="0" max="100" high="90"></progress>
 
 </div>
 
@@ -321,3 +333,4 @@ SONIDOS
 <audio src="views/mp3/ganar.mp3" id="sGanar" type="audio/mpeg" muted></audio>
 <audio src="views/mp3/monedero.mp3" id="sMonedero" type="audio/mpeg" muted></audio>
 <audio src="views/mp3/puntos.mp3" id="sPuntos" type="audio/mpeg" muted></audio>
+

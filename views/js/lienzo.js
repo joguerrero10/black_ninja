@@ -1,7 +1,7 @@
 /*=============================================
 METODOS DEL OBJETO LIENZO
 =============================================*/
-var lienzo = {
+let lienzo = {
 
 	canvas: function(){
 
@@ -36,7 +36,7 @@ var lienzo = {
 		DETALLES
 		=============================================*/
 
-		for(var i = 0; i < datos.bloquesDetalles.length; i++){	
+		for(let i = 0; i < datos.bloquesDetalles.length; i++){	
 
 			ctx.drawImage(datos.detalles, datos.bloquesDetalles[i].x+datos.desplazamientoEscenario, datos.bloquesDetalles[i].y, datos.bloquesDetalles[i].ancho, datos.bloquesDetalles[i].alto);	
 
@@ -46,7 +46,7 @@ var lienzo = {
 		TRAMPAS
 		=============================================*/
 			
-		for(var i = 0; i < datos.posTrampas.length; i++){	
+		for(let i = 0; i < datos.posTrampas.length; i++){	
 
 			ctx.drawImage(datos.imgTrampas[i], datos.sprite_x, 0, 100, 100, datos.posTrampas[i].x,  datos.posTrampas[i].y+datos.movTrampas,  datos.posTrampas[i].ancho,  datos.posTrampas[i].alto);
 
@@ -56,7 +56,7 @@ var lienzo = {
 		BLOQUES
 		=============================================*/
 
-		for(var i = 0; i < datos.bloques.length; i++){	
+		for(let i = 0; i < datos.bloques.length; i++){	
 
 			ctx.drawImage(datos.texturaPlataforma, datos.bloques[i].x+datos.desplazamientoEscenario, datos.bloques[i].y, datos.bloques[i].ancho, datos.bloques[i].alto);
 
@@ -66,17 +66,17 @@ var lienzo = {
 		MONEDAS
 		=============================================*/
 
-		for(var i = 0; i < datos.posMonedas.length; i++){	
+		for(let i = 0; i < datos.posMonedas.length; i++){	
 
 			ctx.drawImage(datos.imgMonedas[i], datos.sprite_x, 0, 100, 100, datos.posMonedas[i].x,  datos.posMonedas[i].y,  datos.posMonedas[i].ancho,  datos.posMonedas[i].alto);
 
-			if(datos.activarMonedaColisionada){
+			if(datos.actiletMonedaColisionada){
 
-				datos.imgMonedas[datos.monedaColisionada].src = "views/img/utileria/colisionesMonedas.png";
+				datos.imgMonedas[datos.monedaColisionada].src = datos.colisionesMonedas.src;
 				ctx.drawImage(datos.imgMonedas[datos.monedaColisionada], datos.sprite_x, 0, 100, 100, datos.posicionMonedaColisionadaX,  datos.posicionMonedaColisionadaY,  datos.posMonedas[i].ancho,  datos.posMonedas[i].alto);
 
 				setTimeout(function(){
-					datos.activarMonedaColisionada = false;
+					datos.actiletMonedaColisionada = false;
 				},500)
 
 			}
@@ -87,7 +87,7 @@ var lienzo = {
 		ENEMIGOS
 		=============================================*/
 
-		for(var i = 0; i < datos.posEnemigos.length; i++){	
+		for(let i = 0; i < datos.posEnemigos.length; i++){	
 
 			ctx.drawImage(datos.imgEnemigos, datos.posEnemigos[i].x,  datos.posEnemigos[i].y,  datos.posEnemigos[i].ancho,  datos.posEnemigos[i].alto);
 
@@ -98,7 +98,7 @@ var lienzo = {
 		BALAS ENEMIGOS
 		=============================================*/
 
-		for(var i = 0; i < datos.posBalasEnemigos.length; i++){	
+		for(let i = 0; i < datos.posBalasEnemigos.length; i++){	
 
 			ctx.drawImage(datos.imgBalasEnemigos, datos.posBalasEnemigos[i].x,  datos.posBalasEnemigos[i].y,  datos.posBalasEnemigos[i].ancho-20,  datos.posBalasEnemigos[i].alto-20);
 
@@ -123,7 +123,7 @@ var lienzo = {
 		PLATAFORMAS
 		=============================================*/
 
-		for(var i = 0; i < datos.plataforma.length; i++){	
+		for(let i = 0; i < datos.plataforma.length; i++){	
 
 			ctx.fillStyle = "rgba(255,0,0,0)";
 

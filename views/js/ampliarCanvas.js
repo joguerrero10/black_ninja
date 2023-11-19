@@ -1,10 +1,10 @@
-var contenedor = document.querySelector("#contenedor");
-var ampliarLienzo = document.querySelector("#lienzo");
-var btnAmpliar = document.querySelector("#btnAmpliar");
-var ampliarTablero = document.querySelector("#tablero");
-var ampliarPreload = document.querySelector("#carga");
-var ampliarFinal = document.querySelector("#final");
-var ampliarGameOver = document.querySelector("#gameover");
+let contenedor = document.querySelector("#contenedor");
+let ampliarLienzo = document.querySelector("#lienzo");
+let btnAmpliar = document.querySelector("#btnAmpliar");
+let ampliarTablero = document.querySelector("#tablero");
+let ampliarPreload = document.querySelector("#carga");
+let ampliarFinal = document.querySelector("#final");
+let ampliarGameOver = document.querySelector("#gameover");
 
 function ampliar(){
 
