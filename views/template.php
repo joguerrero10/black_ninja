@@ -105,9 +105,8 @@
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId: '750291470258589',
-				cookie: true,
 				xfbml: true,
-				version: 'v2.8'
+				version: 'v18.0'
 			});
 			FB.AppEvents.logPageView();
 		};
@@ -119,7 +118,7 @@
 			}
 			js = d.createElement(s);
 			js.id = id;
-			js.src = "//connect.facebook.net/en_US/sdk.js";
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
