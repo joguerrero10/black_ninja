@@ -104,6 +104,4 @@ var datos = {
     sMonedero:null,
     sPuntos:null,
     listaSonidos:[]
-
-
 }
