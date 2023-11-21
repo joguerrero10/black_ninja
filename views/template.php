@@ -2,14 +2,6 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<!--=====================================
-	Marcado de Open Graph
-	======================================-->
-
-	<meta property="og:url" content="http://ninjablack.byethost7.com" />
-	<meta property="og:type"  content="article" />
-	<meta property="og:title"   content="black ninja" />
-	<meta property="fb:app_id"  content="1922319868005008" />
 
 	<!--=====================================
 	PANTALLA DE INICIO DISPOSITIVOS TOUCH
@@ -100,26 +92,5 @@
 <script src="views/js/juego.min.js"></script>
 <script src="views/js/lienzo.min.js"></script>
 <script src="views/js/ampliarCanvas.min.js"></script>
-
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1922319868005008',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();   
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-</script>
 </body>
 </html>
