@@ -2,7 +2,8 @@
 METODOS DEL OBJETO JUEGO
 =============================================*/
 
-let juego = {
+var juego = {
+
 	
 	bajarVolumen: function(event){
 
@@ -10,11 +11,11 @@ let juego = {
 		CONTROLES DEL SONIDO
 		=============================================*/
 
-		let volumen = event.getAttribute("volumen");
+		var volumen = event.getAttribute("volumen");
 
-		let botonesSonido = document.querySelectorAll("#sonido ul li");
+		var botonesSonido = document.querySelectorAll("#sonido ul li");
 
-		for(let i = 0;  i < datos.listaSonidos.length; i++){
+		for(var i = 0;  i < datos.listaSonidos.length; i++){
 
 			datos.listaSonidos[i].volume = volumen;
 
@@ -22,7 +23,7 @@ let juego = {
 
 		if(volumen == 0){
 
-			for(let i = 0; i < botonesSonido.length; i++){
+			for(var i = 0; i < botonesSonido.length; i++){
 
 				botonesSonido[i].style.opacity = .5;
 			}
@@ -35,74 +36,13 @@ let juego = {
 
 		}else{
 
-			for(let i = 0; i < botonesSonido.length; i++){
+			for(var i = 0; i < botonesSonido.length; i++){
 
 				botonesSonido[i].style.opacity = 1;
 
 			}
 		
 		}
-
-	},
-
-	controles: function(){
-
-		/*=============================================
-		EVENTOS TOUCH
-		=============================================*/
-
-		document.querySelector("#izquierda").addEventListener("touchstart", function(e){
-			e.preventDefault();
-			datos.izquierda = true;
-		})
-
-		document.querySelector("#izquierda").addEventListener("touchend", function(e){
-			e.preventDefault();
-			datos.izquierda = false; 
-			datos.imgJugador.src = datos.stop_left.src;
-		})
-
-		document.querySelector("#derecha").addEventListener("touchstart", function(e){
-			e.preventDefault();
-			datos.derecha = true;
-
-		})
-
-		document.querySelector("#derecha").addEventListener("touchend", function(e){
-			e.preventDefault();
-			datos.derecha = false; 	
-			datos.imgJugador.src = datos.stop_right.src;
-		})
-
-		document.querySelector("#arriba").addEventListener("touchstart", function(e){
-			e.preventDefault();
-			datos.salto = true; datos.sSaltoJugador.play();
-
-		})
-
-		document.querySelector("#arriba").addEventListener("touchend", function(e){
-			e.preventDefault();
-			datos.salto = false;
-
-		})
-
-		document.querySelector("#disparo").addEventListener("touchstart", function(e){
-			e.preventDefault();
-			datos.disparo = true;
-			datos.disparo_y = datos.jugador_y;
-			datos.movDisparoJugador = 0;
-			datos.imgDisparoJugador.src = datos.imgDisparoJugador.src;
-			datos.disparo_ancho = 15;
-			datos.disparo_alto = 15;
-			datos.sDisparoJugador.play();
-		})
-
-		document.querySelector("#disparo").addEventListener("touchend", function(e){
-			e.preventDefault();
-			datos.disparo = false;
-
-		})
-
 
 	},
 
@@ -129,7 +69,7 @@ let juego = {
 		if(tecla.keyCode == 32){datos.disparo = true;
 								datos.disparo_y = datos.jugador_y;
 								datos.movDisparoJugador = 0;
-								datos.imgDisparoJugador.src = datos.imgDisparoJugador.src;
+								datos.imgDisparoJugador.src = "views/img/utileria/balasJugador.png";
 								datos.disparo_ancho = 15;
 								datos.disparo_alto = 15;
 								datos.sDisparoJugador.play();
@@ -143,8 +83,8 @@ let juego = {
 		SOLTAR TECLADO
 		=============================================*/
 		tecla.preventDefault();
-		if(tecla.keyCode == 37){datos.izquierda = false; datos.imgJugador.src = datos.stop_left.src;}
-		if(tecla.keyCode == 39){datos.derecha = false; 	datos.imgJugador.src = datos.stop_right.src;}
+		if(tecla.keyCode == 37){datos.izquierda = false; datos.imgJugador.src = "views/img/jugador/stop_left.png";}
+		if(tecla.keyCode == 39){datos.derecha = false; 	datos.imgJugador.src = "views/img/jugador/stop_right.png";}
 		if(tecla.keyCode == 38){datos.salto = false;}
 		if(tecla.keyCode == 32){datos.disparo = false;}
 
@@ -172,7 +112,7 @@ let juego = {
 
 		if(datos.cicloSprite >= 500){datos.cicloSprite = 0;}else{datos.cicloSprite+=20}
 
-		for(let i = 0; i <= datos.cicloSprite; i+=100){
+		for(var i = 0; i <= datos.cicloSprite; i+=100){
 
 			if(datos.cicloSprite >= i){datos.sprite_x = i}
 
@@ -207,7 +147,7 @@ let juego = {
 		MOVIMIENTO HORIZONTAL PLATAFORMA
 		=============================================*/	
 
-		for(let i = 0; i < datos.plataforma.length; i++){
+		for(var i = 0; i < datos.plataforma.length; i++){
 
 			datos.plataforma[i].x += datos.movimiento;
 		}
@@ -216,7 +156,7 @@ let juego = {
 		MOVIMIENTO HORIZONTAL MONEDAS
 		=============================================*/	
 
-		for(let i = 0; i < datos.posMonedas.length; i++){
+		for(var i = 0; i < datos.posMonedas.length; i++){
 
 			datos.posMonedas[i].x += datos.movimiento;
 		}
@@ -225,7 +165,7 @@ let juego = {
 		MOVIMIENTO HORIZONTAL TRAMPAS
 		=============================================*/	
 
-		for(let i = 0; i < datos.posTrampas.length; i++){
+		for(var i = 0; i < datos.posTrampas.length; i++){
 
 			datos.posTrampas[i].x += datos.movimiento;
 		}
@@ -234,7 +174,7 @@ let juego = {
 		MOVIMIENTO HORIZONTAL ENEMIGOS
 		=============================================*/	
 
-		for(let i = 0; i < datos.posEnemigos.length; i++){
+		for(var i = 0; i < datos.posEnemigos.length; i++){
 
 			datos.posEnemigos[i].x += datos.movimiento;
 		}
@@ -243,7 +183,7 @@ let juego = {
 		MOVIMIENTO HORIZONTAL BALAS ENEMIGOS
 		=============================================*/	
 
-		for(let i = 0; i < datos.posBalasEnemigos.length; i++){
+		for(var i = 0; i < datos.posBalasEnemigos.length; i++){
 
 			datos.posBalasEnemigos[i].x += datos.movimiento;
 		}
@@ -281,12 +221,12 @@ let juego = {
 
 			if(datos.gravedad == 0){
 
-				datos.imgJugador.src = datos.run_left.src;
+				datos.imgJugador.src = "views/img/jugador/run_left.png";
 			}
 
 			if(datos.salto && datos.gravedad == 0){
 
-				datos.imgJugador.src = datos.jump_left.src;
+				datos.imgJugador.src = "views/img/jugador/jump_left.png";
 			}
 	
 		}
@@ -311,12 +251,12 @@ let juego = {
 
 			if(datos.gravedad == 0){
 
-				datos.imgJugador.src = datos.run_right.src;
+				datos.imgJugador.src = "views/img/jugador/run_right.png";
 			}
 
 			if(datos.salto && datos.gravedad == 0){
 
-				datos.imgJugador.src = datos.jump_right.src;
+				datos.imgJugador.src = "views/img/jugador/jump_right.png";
 			}
 			
 		}
@@ -342,7 +282,7 @@ let juego = {
 		COLISIONES CON PLATAFORMA
 		=============================================*/	
 
-		for(let i = 0; i < datos.plataforma.length; i++){
+		for(var i = 0; i < datos.plataforma.length; i++){
 
 			function colisionesPlataforma(){
 
@@ -435,7 +375,7 @@ let juego = {
 		COLISIONES CON MONEDAS
 		=============================================*/	
 
-		for(let i = 0; i < datos.posMonedas.length; i++){
+		for(var i = 0; i < datos.posMonedas.length; i++){
 
 			function colisionMonedas(){
 
@@ -461,7 +401,7 @@ let juego = {
 
 				datos.sMonedas.play();
 
-				datos.actiletMonedaColisionada = true;
+				datos.activarMonedaColisionada = true;
 
 				datos.monedaColisionada = i;
 
@@ -483,7 +423,7 @@ let juego = {
 		COLISIONES CON TRAMPAS
 		=============================================*/	
 
-		for(let i = 0; i < datos.posTrampas.length; i++){
+		for(var i = 0; i < datos.posTrampas.length; i++){
 
 			function colisionTrampas(){
 
@@ -510,10 +450,10 @@ let juego = {
 				datos.sColisionTrampasEnemigos.play();
 				datos.sEnergia.play();
 
-				datos.imgTrampas[i].src = datos.colisionesTrampas.src;
-				datos.imgJugador.src = datos.colision_trampa.src;
+				datos.imgTrampas[i].src = "views/img/utileria/colisionesTrampas.png";
+				datos.imgJugador.src = "views/img/jugador/colision_trampa.png";
 				datos.energia --;
-				document.querySelector("#energia progress").value = datos.energia;
+				document.querySelector("#energia meter").value = datos.energia;
 				document.querySelector("#energia span").innerHTML = datos.energia +"%";	
 
 				if(datos.energia <= 0){
@@ -523,7 +463,7 @@ let juego = {
 			
 			}else{
 
-				datos.imgTrampas[i].src = datos.trampas.src;
+				datos.imgTrampas[i].src = "views/img/utileria/trampas.png";
 			}
 
 		}
@@ -532,7 +472,7 @@ let juego = {
 		COLISIONES CON ENEMIGOS
 		=============================================*/	
 
-		for(let i = 0; i < datos.posEnemigos.length; i++){
+		for(var i = 0; i < datos.posEnemigos.length; i++){
 
 			function colisionesEnemigos(){
 
@@ -625,7 +565,7 @@ let juego = {
 
 		if(datos.cicloBalasEnemigos >= 5000){datos.cicloBalasEnemigos = 0}else{datos.cicloBalasEnemigos +=20}
 
-		for(let i = 0; i <= datos.cicloBalasEnemigos; i+= 1000){
+		for(var i = 0; i <= datos.cicloBalasEnemigos; i+= 1000){
 
 			if(datos.cicloBalasEnemigos >= i){
 
@@ -647,7 +587,7 @@ let juego = {
 
 		if(datos.cambioBalasEnemigos){
 
-			for(let i = 0; i < datos.posBalasEnemigos.length; i++){
+			for(var i = 0; i < datos.posBalasEnemigos.length; i++){
 
 				datos.posBalasEnemigos[i].x -= datos.movBalasEnemigos;
 
@@ -655,7 +595,7 @@ let juego = {
 
 		}else{
 
-			for(let i = 0; i < datos.posBalasEnemigos.length; i++){
+			for(var i = 0; i < datos.posBalasEnemigos.length; i++){
 
 				datos.posBalasEnemigos[i].x = datos.posEnemigos[i].x;
 
@@ -667,7 +607,7 @@ let juego = {
 		COLISIONES CON BALAS ENEMIGOS
 		=============================================*/	
 
-		for(let i = 0; i < datos.posBalasEnemigos.length; i++){
+		for(var i = 0; i < datos.posBalasEnemigos.length; i++){
 
 			function colisionBalasEnemigos(){
 
@@ -695,7 +635,7 @@ let juego = {
 				datos.sEnergia.play();
 
 				datos.energia --;
-				document.querySelector("#energia progress").value = datos.energia;
+				document.querySelector("#energia meter").value = datos.energia;
 				document.querySelector("#energia span").innerHTML = datos.energia +"%";	
 
 				if(datos.energia <= 0){
@@ -703,14 +643,13 @@ let juego = {
 					datos.reset = true;
 				}		
 
-				datos.imgJugador.src = datos.colision_trampa.src;
-				datos.imgBalasEnemigos.src = datos.colisionesBalasEnemigos.src;
+				datos.imgJugador.src = "views/img/jugador/colision_trampa.png";
+				datos.imgBalasEnemigos.src = "views/img/utileria/colisionesBalasEnemigos.png";
 
 				setTimeout(function(){
 
-					datos.imgJugador.src = datos.stop_right.src;
-					datos.direccionJugador = "derecha";
-					datos.imgBalasEnemigos.src = datos.balasEnemigos.src;
+					datos.imgJugador.src = "views/img/jugador/stop_right.png";
+					datos.imgBalasEnemigos.src = "views/img/utileria/balasEnemigos.png";
 
 				},100)
 				
@@ -763,7 +702,7 @@ let juego = {
 		COLISIONES BALAS ENEMIGOS CON DISPARO JUGADOR
 		=============================================*/
 
-		for(let i = 0; i < datos.posBalasEnemigos.length; i++){
+		for(var i = 0; i < datos.posBalasEnemigos.length; i++){
 
 			function colisionDisparoJugador(){
 
@@ -789,7 +728,7 @@ let juego = {
 
 				datos.sColisionBalasEnemigo.play();
 
-				datos.imgDisparoJugador.src = datos.colisionesBalas.src;
+				datos.imgDisparoJugador.src = "views/img/utileria/colisionesBalas.png";
 
 				datos.posBalasEnemigos[i].x = -500;
 				datos.posBalasEnemigos[i].y = -500;
@@ -840,7 +779,7 @@ let juego = {
 			RESET ENERGÍA
 			=============================================*/
 			datos.energia = 100;
-			document.querySelector("#energia progress").value = datos.energia;
+			document.querySelector("#energia meter").value = datos.energia;
 			document.querySelector("#energia span").innerHTML = datos.energia +"%";
 
 			/*=============================================
@@ -891,21 +830,21 @@ let juego = {
 
 			if(datos.nivel == 1){
 
-			 	let xhr_plataforma = new XMLHttpRequest();
+			 	var xhr_plataforma = new XMLHttpRequest();
 				xhr_plataforma.open("GET", "views/js/json/plataformasNivel1.json", true)
 
 			}
 
 			if(datos.nivel == 2){
 
-				let xhr_plataforma = new XMLHttpRequest();
+				var xhr_plataforma = new XMLHttpRequest();
 				xhr_plataforma.open("GET", "views/js/json/plataformasNivel2.json", true)  
 
 			}
 
 			if(datos.nivel == 3){
 
-	      		let xhr_plataforma = new XMLHttpRequest();
+	      		var xhr_plataforma = new XMLHttpRequest();
 				xhr_plataforma.open("GET", "views/js/json/plataformasNivel3.json", true)
 			}
 
@@ -926,21 +865,21 @@ let juego = {
 
 			if(datos.nivel == 1){
 
-			 	let xhr_monedas = new XMLHttpRequest();
+			 	var xhr_monedas = new XMLHttpRequest();
 				xhr_monedas.open("GET", "views/js/json/monedasNivel1.json", true)
 
 			}
 
 			if(datos.nivel == 2){
 
-				let xhr_monedas = new XMLHttpRequest();
+				var xhr_monedas = new XMLHttpRequest();
 				xhr_monedas.open("GET", "views/js/json/monedasNivel2.json", true)  
 
 			}
 
 			if(datos.nivel == 3){
 
-	      		let xhr_monedas = new XMLHttpRequest();
+	      		var xhr_monedas = new XMLHttpRequest();
 				xhr_monedas.open("GET", "views/js/json/monedasNivel3.json", true)
 			}
 
@@ -952,10 +891,10 @@ let juego = {
 
 					datos.posMonedas = JSON.parse(xhr_monedas.responseText)
 
-					for(let i = 0; i < datos.posMonedas.length; i ++){
+					for(var i = 0; i < datos.posMonedas.length; i ++){
 
 						datos.imgMonedas[i] = new Image();
-						datos.imgMonedas[i].src =  datos.monedas.src;
+						datos.imgMonedas[i].src = "views/img/utileria/monedas.png";
 					}
 
 				}
@@ -967,21 +906,21 @@ let juego = {
 
 			if(datos.nivel == 1){
 
-			 	let xhr_trampas = new XMLHttpRequest();
+			 	var xhr_trampas = new XMLHttpRequest();
 				xhr_trampas.open("GET", "views/js/json/trampasNivel1.json", true)
 
 			}
 
 			if(datos.nivel == 2){
 
-				let xhr_trampas = new XMLHttpRequest();
+				var xhr_trampas = new XMLHttpRequest();
 				xhr_trampas.open("GET", "views/js/json/trampasNivel2.json", true)  
 
 			}
 
 			if(datos.nivel == 3){
 
-	      		let xhr_trampas = new XMLHttpRequest();
+	      		var xhr_trampas = new XMLHttpRequest();
 				xhr_trampas.open("GET", "views/js/json/trampasNivel3.json", true)
 			}
 
@@ -993,10 +932,10 @@ let juego = {
 
 					datos.posTrampas = JSON.parse(xhr_trampas.responseText)
 
-					for(let i = 0; i < datos.posTrampas.length; i ++){
+					for(var i = 0; i < datos.posTrampas.length; i ++){
 
 						datos.imgTrampas[i] = new Image();
-						datos.imgTrampas[i].src = datos.trampas.src;
+						datos.imgTrampas[i].src = "views/img/utileria/trampas.png";
 					}
 
 				}
@@ -1006,11 +945,16 @@ let juego = {
 			RESET BALAS Y ENEMIGOS
 			=============================================*/
 
-			for(let i = 1; i <= 3; i++){		
+			datos.imgEnemigos = new Image();
+			datos.imgEnemigos.src = "views/img/utileria/enemigos.png";	
+			datos.imgBalasEnemigos = new Image();
+			datos.imgBalasEnemigos.src = "views/img/utileria/balasEnemigos.png";	
+
+			for(var i = 1; i <= 3; i++){		
 
 				if(datos.nivel == i){
 
-					let xhr_enemigos = new XMLHttpRequest();
+					var xhr_enemigos = new XMLHttpRequest();
 					xhr_enemigos.open("GET", "views/js/json/enemigosNivel"+i+".json", true)
 
 				}
@@ -1046,30 +990,28 @@ let juego = {
 
 			cancelAnimationFrame(animacion);
 
-			document.querySelector("#final").style.display = "block";
-
 			datos.sGanar.play();
 
 			if(datos.nivel == 1){datos.sBackground01.pause();}
 			if(datos.nivel == 2){datos.sBackground02.pause();}
 			if(datos.nivel == 3){datos.sBackground03.pause();}
 
+			document.querySelector("#final").style.display = "block";
+
 			document.querySelector("#finalMonedas span").innerHTML = datos.contadorMonedas;
 			document.querySelector("#medidaEnergiaFinal").value = datos.energia;
 			document.querySelector("#totalEnergia").innerHTML = datos.energia + "%";
 
-			let puntosEnergia = 100 - datos.energia;
+			var puntosEnergia = 100 - datos.energia;
 			document.querySelector("#puntosEnergia span").innerHTML = "-"+puntosEnergia;
 
-			let puntosVidas = 0;
-
+			var puntosVidas = 0;
 			if(datos.vidas == 3){
 				puntosVidas = 0;
 			}
-
 			if(datos.vidas == 2){
 				puntosVidas = 10;
-				document.querySelector("#final ol li:nth-child(3)").innerHTML = "X";
+				 document.querySelector("#final ol li:nth-child(3)").innerHTML = "X";
 			}
 			if(datos.vidas == 1){
 				 puntosVidas = 20;
@@ -1083,7 +1025,7 @@ let juego = {
 
 			datos.incrementoPuntaje = 0;
 
-			let intervalo = setInterval(function(){
+			var intervalo = setInterval(function(){
 
 				if(datos.incrementoPuntaje > datos.puntaje){
 
@@ -1095,12 +1037,12 @@ let juego = {
 
 					setTimeout(function(){
 
-						let xhr = new XMLHttpRequest();
-						let nivel = "ok";
-						let puntaje = datos.puntaje;
-						let numeroNivel = datos.nivel;
-						let id = datos.id;
-						let url = "views/ajax/usuarios.php";
+					    var xhr = new XMLHttpRequest();
+						var nivel = "ok";
+						var puntaje = datos.puntaje;
+						var numeroNivel = datos.nivel;
+						var id = datos.id;
+						var url = "views/ajax/usuarios.php";
 						xhr.open("POST", url, true); 
 						xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 						xhr.send("nivel=" + nivel + "& puntaje=" + puntaje + "& numeroNivel=" + numeroNivel + "& id=" + id);
@@ -1118,19 +1060,18 @@ let juego = {
 							}
 						}
 
-					},5000)
+					},3000)
 
 				}else{
 
-					datos.incrementoPuntaje++;
+					datos.incrementoPuntaje++
 					datos.sMonedero.play();
 					document.querySelector("#puntajeFinal").innerHTML = datos.incrementoPuntaje;
 
 				}
 
-			}, 16)
-
-			
+			},16)
+						
 		}
 
 	},

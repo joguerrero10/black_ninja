@@ -61,7 +61,7 @@ var datos = {
 	imgBalasEnemigos:null,
 	posBalasEnemigos:[],
 	movBalasEnemigos:0,
-	velocidadBalasEnemigos:3,
+	velocidadBalasEnemigos:5,
 	cicloBalasEnemigos:0,
 	cambioBalasEnemigos:false,
 	disparo: false,
@@ -104,4 +104,6 @@ var datos = {
     sMonedero:null,
     sPuntos:null,
     listaSonidos:[]
+
+
 }
