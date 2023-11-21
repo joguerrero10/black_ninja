@@ -62,7 +62,7 @@ var datos = {
 	posBalasEnemigos:[],
 	movBalasEnemigos:0,
 	velocidadBalasEnemigos:3,
-	cicloBalasEnemigos:5,
+	cicloBalasEnemigos:0,
 	cambioBalasEnemigos:false,
 	disparo: false,
 	imgDisparoJugador:null,

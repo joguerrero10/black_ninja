@@ -2,8 +2,7 @@
 
 require_once "conexion.php";
 
-class GestorUsuariosModel
-{
+class GestorUsuariosModel{
 
 	#SELECCIONAR USUARIOS
 	#------------------------------------------------------------
@@ -116,4 +115,5 @@ class GestorUsuariosModel
 			echo "Error: " . $e->getMessage();
 		}
 	}
+
 }
