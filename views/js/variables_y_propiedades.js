@@ -38,7 +38,7 @@ var datos = {
 	derecha: false,
 	movimiento: 0,
 	desplazamientoEscenario: 0,
-	velocidad: 3,
+	velocidad: 5,
 	limiteEscenario: -1995,
 	movimientoJugador:0,
 	plataforma: [],
@@ -61,7 +61,7 @@ var datos = {
 	imgBalasEnemigos:null,
 	posBalasEnemigos:[],
 	movBalasEnemigos:0,
-	velocidadBalasEnemigos:3,
+	velocidadBalasEnemigos:5,
 	cicloBalasEnemigos:0,
 	cambioBalasEnemigos:false,
 	disparo: false,
@@ -83,8 +83,8 @@ var datos = {
 	posicionMonedaColisionadaY: 0,
 	energia:100,
 	vidas: 3,
-	puntaje:0,
-	incrementoPuntaje:0,
+	puntaje: 0,
+	incrementoPuntaje: 0,
 	/*=============================================
 	SONIDO
 	=============================================*/
@@ -103,7 +103,23 @@ var datos = {
     sGanar:null,
     sMonedero:null,
     sPuntos:null,
-    listaSonidos:[]
-
+    listaSonidos:[],
+    /*=============================================
+	PRECARGA DE IMÁGENES
+	=============================================*/
+	colision_trampa:null,
+	jump_left:null,
+	jump_right:null,
+	run_left:null,
+	run_right:null,
+	stop_left:null,
+	stop_right:null,
+	colisionesBalas:null,
+	colisionesBalasEnemigos:null,
+	colisionesMonedas:null,
+	colisionesTrampas:null,
+	monedas: null,
+	trampas: null,
+	balasEnemigos:null
 
 }

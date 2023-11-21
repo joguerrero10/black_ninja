@@ -3,7 +3,6 @@ METODOS DEL OBJETO JUEGO
 =============================================*/
 
 var juego = {
-
 	
 	bajarVolumen: function(event){
 
@@ -46,6 +45,67 @@ var juego = {
 
 	},
 
+	controles: function(){
+
+		/*=============================================
+		EVENTOS TOUCH
+		=============================================*/
+
+		document.querySelector("#izquierda").addEventListener("touchstart", function(e){
+			e.preventDefault();
+			datos.izquierda = true;
+		})
+
+		document.querySelector("#izquierda").addEventListener("touchend", function(e){
+			e.preventDefault();
+			datos.izquierda = false; 
+			datos.imgJugador.src = datos.stop_left.src;
+		})
+
+		document.querySelector("#derecha").addEventListener("touchstart", function(e){
+			e.preventDefault();
+			datos.derecha = true;
+
+		})
+
+		document.querySelector("#derecha").addEventListener("touchend", function(e){
+			e.preventDefault();
+			datos.derecha = false; 	
+			datos.imgJugador.src = datos.stop_right.src;
+		})
+
+		document.querySelector("#arriba").addEventListener("touchstart", function(e){
+			e.preventDefault();
+			datos.salto = true; datos.sSaltoJugador.play();
+
+		})
+
+		document.querySelector("#arriba").addEventListener("touchend", function(e){
+			e.preventDefault();
+			datos.salto = false;
+
+		})
+
+		document.querySelector("#disparo").addEventListener("touchstart", function(e){
+			e.preventDefault();
+			datos.disparo = true;
+			datos.disparo_y = datos.jugador_y;
+			datos.movDisparoJugador = 0;
+			datos.imgDisparoJugador.src = datos.imgDisparoJugador.src;
+			datos.disparo_ancho = 15;
+			datos.disparo_alto = 15;
+			datos.sDisparoJugador.play();
+		})
+
+		document.querySelector("#disparo").addEventListener("touchend", function(e){
+			e.preventDefault();
+			datos.disparo = false;
+
+		})
+
+
+	},
+
 	teclado: function(){
 
 		/*=============================================
@@ -69,7 +129,7 @@ var juego = {
 		if(tecla.keyCode == 32){datos.disparo = true;
 								datos.disparo_y = datos.jugador_y;
 								datos.movDisparoJugador = 0;
-								datos.imgDisparoJugador.src = "views/img/utileria/balasJugador.png";
+								datos.imgDisparoJugador.src = datos.imgDisparoJugador.src;
 								datos.disparo_ancho = 15;
 								datos.disparo_alto = 15;
 								datos.sDisparoJugador.play();
@@ -83,8 +143,8 @@ var juego = {
 		SOLTAR TECLADO
 		=============================================*/
 		tecla.preventDefault();
-		if(tecla.keyCode == 37){datos.izquierda = false; datos.imgJugador.src = "views/img/jugador/stop_left.png";}
-		if(tecla.keyCode == 39){datos.derecha = false; 	datos.imgJugador.src = "views/img/jugador/stop_right.png";}
+		if(tecla.keyCode == 37){datos.izquierda = false; datos.imgJugador.src = datos.stop_left.src;}
+		if(tecla.keyCode == 39){datos.derecha = false; 	datos.imgJugador.src = datos.stop_right.src;}
 		if(tecla.keyCode == 38){datos.salto = false;}
 		if(tecla.keyCode == 32){datos.disparo = false;}
 
@@ -221,12 +281,12 @@ var juego = {
 
 			if(datos.gravedad == 0){
 
-				datos.imgJugador.src = "views/img/jugador/run_left.png";
+				datos.imgJugador.src = datos.run_left.src;
 			}
 
 			if(datos.salto && datos.gravedad == 0){
 
-				datos.imgJugador.src = "views/img/jugador/jump_left.png";
+				datos.imgJugador.src = datos.jump_left.src;
 			}
 	
 		}
@@ -251,12 +311,12 @@ var juego = {
 
 			if(datos.gravedad == 0){
 
-				datos.imgJugador.src = "views/img/jugador/run_right.png";
+				datos.imgJugador.src = datos.run_right.src;
 			}
 
 			if(datos.salto && datos.gravedad == 0){
 
-				datos.imgJugador.src = "views/img/jugador/jump_right.png";
+				datos.imgJugador.src = datos.jump_right.src;
 			}
 			
 		}
@@ -450,10 +510,10 @@ var juego = {
 				datos.sColisionTrampasEnemigos.play();
 				datos.sEnergia.play();
 
-				datos.imgTrampas[i].src = "views/img/utileria/colisionesTrampas.png";
-				datos.imgJugador.src = "views/img/jugador/colision_trampa.png";
+				datos.imgTrampas[i].src = datos.colisionesTrampas.src;
+				datos.imgJugador.src = datos.colision_trampa.src;
 				datos.energia --;
-				document.querySelector("#energia meter").value = datos.energia;
+				document.querySelector("#energia progress").value = datos.energia;
 				document.querySelector("#energia span").innerHTML = datos.energia +"%";	
 
 				if(datos.energia <= 0){
@@ -463,7 +523,7 @@ var juego = {
 			
 			}else{
 
-				datos.imgTrampas[i].src = "views/img/utileria/trampas.png";
+				datos.imgTrampas[i].src = datos.trampas.src;
 			}
 
 		}
@@ -635,7 +695,7 @@ var juego = {
 				datos.sEnergia.play();
 
 				datos.energia --;
-				document.querySelector("#energia meter").value = datos.energia;
+				document.querySelector("#energia progress").value = datos.energia;
 				document.querySelector("#energia span").innerHTML = datos.energia +"%";	
 
 				if(datos.energia <= 0){
@@ -643,13 +703,14 @@ var juego = {
 					datos.reset = true;
 				}		
 
-				datos.imgJugador.src = "views/img/jugador/colision_trampa.png";
-				datos.imgBalasEnemigos.src = "views/img/utileria/colisionesBalasEnemigos.png";
+				datos.imgJugador.src = datos.colision_trampa.src;
+				datos.imgBalasEnemigos.src = datos.colisionesBalasEnemigos.src;
 
 				setTimeout(function(){
 
-					datos.imgJugador.src = "views/img/jugador/stop_right.png";
-					datos.imgBalasEnemigos.src = "views/img/utileria/balasEnemigos.png";
+					datos.imgJugador.src = datos.stop_right.src;
+					datos.direccionJugador = "derecha";
+					datos.imgBalasEnemigos.src = datos.balasEnemigos.src;
 
 				},100)
 				
@@ -728,7 +789,7 @@ var juego = {
 
 				datos.sColisionBalasEnemigo.play();
 
-				datos.imgDisparoJugador.src = "views/img/utileria/colisionesBalas.png";
+				datos.imgDisparoJugador.src = datos.colisionesBalas.src;
 
 				datos.posBalasEnemigos[i].x = -500;
 				datos.posBalasEnemigos[i].y = -500;
@@ -779,7 +840,7 @@ var juego = {
 			RESET ENERGÍA
 			=============================================*/
 			datos.energia = 100;
-			document.querySelector("#energia meter").value = datos.energia;
+			document.querySelector("#energia progress").value = datos.energia;
 			document.querySelector("#energia span").innerHTML = datos.energia +"%";
 
 			/*=============================================
@@ -894,7 +955,7 @@ var juego = {
 					for(var i = 0; i < datos.posMonedas.length; i ++){
 
 						datos.imgMonedas[i] = new Image();
-						datos.imgMonedas[i].src = "views/img/utileria/monedas.png";
+						datos.imgMonedas[i].src =  datos.monedas.src;
 					}
 
 				}
@@ -935,7 +996,7 @@ var juego = {
 					for(var i = 0; i < datos.posTrampas.length; i ++){
 
 						datos.imgTrampas[i] = new Image();
-						datos.imgTrampas[i].src = "views/img/utileria/trampas.png";
+						datos.imgTrampas[i].src = datos.trampas.src;
 					}
 
 				}
@@ -944,11 +1005,6 @@ var juego = {
 			/*=============================================
 			RESET BALAS Y ENEMIGOS
 			=============================================*/
-
-			datos.imgEnemigos = new Image();
-			datos.imgEnemigos.src = "views/img/utileria/enemigos.png";	
-			datos.imgBalasEnemigos = new Image();
-			datos.imgBalasEnemigos.src = "views/img/utileria/balasEnemigos.png";	
 
 			for(var i = 1; i <= 3; i++){		
 
@@ -990,13 +1046,13 @@ var juego = {
 
 			cancelAnimationFrame(animacion);
 
+			document.querySelector("#final").style.display = "block";
+
 			datos.sGanar.play();
 
 			if(datos.nivel == 1){datos.sBackground01.pause();}
 			if(datos.nivel == 2){datos.sBackground02.pause();}
 			if(datos.nivel == 3){datos.sBackground03.pause();}
-
-			document.querySelector("#final").style.display = "block";
 
 			document.querySelector("#finalMonedas span").innerHTML = datos.contadorMonedas;
 			document.querySelector("#medidaEnergiaFinal").value = datos.energia;
@@ -1006,12 +1062,14 @@ var juego = {
 			document.querySelector("#puntosEnergia span").innerHTML = "-"+puntosEnergia;
 
 			var puntosVidas = 0;
+
 			if(datos.vidas == 3){
 				puntosVidas = 0;
 			}
+
 			if(datos.vidas == 2){
 				puntosVidas = 10;
-				 document.querySelector("#final ol li:nth-child(3)").innerHTML = "X";
+				document.querySelector("#final ol li:nth-child(3)").innerHTML = "X";
 			}
 			if(datos.vidas == 1){
 				 puntosVidas = 20;
@@ -1037,7 +1095,7 @@ var juego = {
 
 					setTimeout(function(){
 
-					    var xhr = new XMLHttpRequest();
+						var xhr = new XMLHttpRequest();
 						var nivel = "ok";
 						var puntaje = datos.puntaje;
 						var numeroNivel = datos.nivel;
@@ -1060,18 +1118,19 @@ var juego = {
 							}
 						}
 
-					},3000)
+					},5000)
 
 				}else{
 
-					datos.incrementoPuntaje++
+					datos.incrementoPuntaje++;
 					datos.sMonedero.play();
 					document.querySelector("#puntajeFinal").innerHTML = datos.incrementoPuntaje;
 
 				}
 
-			},16)
-						
+			}, 16)
+
+			
 		}
 
 	},

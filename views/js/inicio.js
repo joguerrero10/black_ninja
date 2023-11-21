@@ -5,31 +5,150 @@ METODOS DEL OBJETO INICIO
 var inicio = {
 
 	/*=============================================
+	SALIR INSTRUCTIVO
+	=============================================*/
+
+	salirInstructivo: function(){
+
+		document.querySelector("#instruccionesTouch").parentNode.removeChild(document.querySelector("#instruccionesTouch"));	
+
+	},
+
+	/*=============================================
 	METODO INGRESO A LA APLICACIÓN
 	=============================================*/
 
 	iniciar: function(){
 
-		var identificador = "22222222";		
-		var primer_nombre = "julio";
-		var foto = "views/img/intro/julio.png";	
-		var xhr = new XMLHttpRequest();
-		var url = "views/ajax/usuarios.php";
-		xhr.open("POST", url, true);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.send("identificador="+identificador+"& primer_nombre="+primer_nombre+"& foto="+foto);
+		if(window.matchMedia("(min-width:1025px)").matches){
 
-		xhr.onreadystatechange = function(){
+			FB.login(function(response){validarUsuario();}, {scope: 'public_profile, email'});
 
-			if((xhr.readyState == 4) && (xhr.status == 200)){
+			//
 
-				if(xhr.responseText == "ok"){
+			function validarUsuario(){
 
-					window.location = "inicio";
-				}
+				 FB.getLoginStatus(function(response) {statusChangeCallback(response);});
+
 			}
 
+			//
+
+			function statusChangeCallback(response){
+
+				 if(response.status === 'connected'){
+
+				 	testAPI();
+
+				 }else{
+
+				 	 document.querySelector("#ingresoFacebook").innerHTML += '<div style="color:white; text-align:center">¡Vuelve a intentarlo!</div>';
+				 }
+
+			}
+
+			//
+
+			function testAPI(){
+
+				FB.api('/me?fields=id,name,first_name,email,picture', function(response){
+
+					var xhr = new XMLHttpRequest();
+					var identificador = response.email;
+					var primer_nombre = response.first_name;
+					var foto = "http://graph.facebook.com/"+response.id+"/picture?type=large";
+					var url = "views/ajax/usuarios.php";
+					xhr.open("POST", url, true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.send("identificador="+identificador+"& primer_nombre="+primer_nombre+"& foto="+foto);
+
+					xhr.onreadystatechange = function(){
+
+						if((xhr.readyState == 4) && (xhr.status == 200)){
+
+							if(xhr.responseText == "ok"){
+
+								window.location = "inicio";
+
+							}
+
+						}
+
+					}
+
+				 });
+
+			}
+
+		}else{	
+
+			if(document.querySelector("#email").value != "" && document.querySelector("#nombre").value != ""){
+
+				var xhr = new XMLHttpRequest();
+				var identificador = document.querySelector("#email").value;
+				var primer_nombre = document.querySelector("#nombre").value;
+				var foto = "views/img/intro/anonymous.png";
+				var url = "views/ajax/usuarios.php";
+				xhr.open("POST", url, true);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhr.send("identificador="+identificador+"& primer_nombre="+primer_nombre+"& foto="+foto);
+				
+				xhr.onreadystatechange = function(){
+
+					if((xhr.readyState == 4) && (xhr.status == 200)){
+
+						if(xhr.responseText == "ok"){
+
+							window.location = "inicio";
+
+						}
+
+					}
+
+				}	
+
+			}		
+
 		}
+
+	},
+
+	/*=============================================
+	CERRAR FACEBOOK
+	=============================================*/
+
+	cerrarFacebook: function(){
+
+		FB.getLoginStatus(function(response){
+
+			 if(response.status === 'connected'){
+
+			 	FB.logout(function(response){
+
+			 		setTimeout(function(){window.location="salir";},500)			 		
+			 	
+			 	});
+
+			 }
+
+		});
+
+	},
+
+	/*=============================================
+	COMPARTIR EN FACEBOOK
+	=============================================*/
+
+	compartirFacebook: function(event){
+
+		var nombre = event.getAttribute("nombre");
+
+		FB.ui({
+		  method: 'share',
+		  display: 'popup',
+		  quote: '¡' +nombre+' ha gando '+datos.puntaje+' puntos en el nivel '+datos.nivel+', supera su puntaje!',
+		  href: 'http://tutoriales.byethost10.com/blackninja',
+		}, function(response){});
 
 	},
 
@@ -44,9 +163,17 @@ var inicio = {
 		datos.nivel = event.getAttribute("nivel");
 		datos.id = event.getAttribute("id");
 
+		/*=============================================
+		FULLSCREEN DEL JUEGO
+		=============================================*/
+
 		if(screenfull.enabled){
 			screenfull.request(document.querySelector("#contenedor"))
 		}
+
+		window.addEventListener("load", function(){ window. scrollTo(0, 0);});
+
+		document.addEventListener("touchmove", function(e){ e.preventDefault() });
 
 		/*=============================================
 		SONIDOS
@@ -103,6 +230,40 @@ var inicio = {
 		ctx = canvas.getContext("2d");
 
 		document.querySelector("#carga").style.display = "block";
+
+		/*=============================================
+		CARGA DE IMÁGENES
+		=============================================*/
+
+		datos.colision_trampa = new Image();
+		datos.jump_left = new Image();
+		datos.jump_right = new Image();
+		datos.run_left = new Image();
+		datos.run_right = new Image();
+		datos.stop_left = new Image();
+		datos.stop_right = new Image();
+		datos.colisionesBalas = new Image();
+		datos.colisionesBalasEnemigos = new Image();
+		datos.colisionesMonedas = new Image();
+		datos.colisionesTrampas = new Image();
+		datos.monedas = new Image();
+		datos.trampas = new Image();
+		datos.balasEnemigos = new Image();
+
+		datos.colision_trampa.src = "views/img/jugador/colision_trampa.png";
+		datos.jump_left.src = "views/img/jugador/jump_left.png";
+		datos.jump_right.src = "views/img/jugador/jump_right.png";
+		datos.run_left.src = "views/img/jugador/run_left.png";
+		datos.run_right.src = "views/img/jugador/run_right.png";
+		datos.stop_left.src = "views/img/jugador/stop_left.png";
+		datos.stop_right.src = "views/img/jugador/stop_right.png";
+		datos.colisionesBalas.src = "views/img/utileria/colisionesBalas.png";
+		datos.colisionesBalasEnemigos.src = "views/img/utileria/colisionesBalasEnemigos.png";
+		datos.colisionesMonedas.src = "views/img/utileria/colisionesMonedas.png";
+		datos.colisionesTrampas.src = "views/img/utileria/colisionesTrampas.png";
+		datos.monedas.src = "views/img/utileria/monedas.png";
+		datos.trampas.src = "views/img/utileria/trampas.png";
+		datos.balasEnemigos.src = "views/img/utileria/balasEnemigos.png";
 
 		/*=============================================
 		PLANO 3
@@ -376,7 +537,8 @@ var inicio = {
 		PRELOAD
 		=============================================*/
 
-		var cargarArchivos = [datos.plano0, datos.texturaPlataforma, datos.detalles, datos.plano1, datos.plano2, datos.plano3, datos.imgJugador, datos.imgEnemigos, datos.imgBalasEnemigos, datos.imgDisparoJugador];
+		var cargarArchivos = [datos.plano0, datos.texturaPlataforma, datos.detalles, datos.plano1, datos.plano2, datos.plano3, datos.imgJugador, datos.imgEnemigos, datos.imgBalasEnemigos, datos.imgDisparoJugador, datos.colision_trampa, datos.jump_left, datos.jump_right, datos.run_left, datos.run_right, datos.stop_left, datos.stop_right, datos.colisionesBalas, datos.colisionesBalasEnemigos, datos.colisionesMonedas, datos.colisionesTrampas, datos.monedas, datos.trampas, datos.balasEnemigos];
+
 		var numeroArchivos = 0;
 		var porcentaje = 0;
 
@@ -391,7 +553,7 @@ var inicio = {
 			porcentaje = 100 / cargarArchivos.length;
 
 			document.querySelector("#carga span").innerHTML = Math.ceil(porcentaje * numeroArchivos) + "%";
-			document.querySelector("#carga meter").value = Math.ceil(porcentaje * numeroArchivos);
+			document.querySelector("#carga progress").value = Math.ceil(porcentaje * numeroArchivos);
 
 			if(numeroArchivos == cargarArchivos.length){
 
@@ -399,6 +561,7 @@ var inicio = {
 				document.querySelector("#btnAmpliar").style.display = "block";
 
 				document.querySelector("#tablero").style.display = "block";
+				document.querySelector("#controles").style.display = "block";
 
 				document.querySelector("#carga").style.opacity = 0; 
 
@@ -408,6 +571,7 @@ var inicio = {
 					  
 				},10); 
 
+				juego.controles();
 				juego.teclado();
 				juego.tiempo(); 
 
