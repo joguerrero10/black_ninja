@@ -96,7 +96,7 @@
 	</footer>
 
 	<script src="views/js/variables_y_propiedades.min.js"></script>
-	<script src="views/js/inicio.min.js"></script>
+	<script src="views/js/inicio.js"></script>
 	<script src="views/js/juego.min.js"></script>
 	<script src="views/js/lienzo.min.js"></script>
 	<script src="views/js/ampliarCanvas.min.js"></script>
