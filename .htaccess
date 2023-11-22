@@ -1,5 +1,15 @@
+#Esta línea configura las opciones para el directorio donde se encuentra este archivo. En este caso, se 
+#deshabilitan los índices de directorios, lo que significa que si alguien intenta acceder a un directorio sin 
+#un archivo index (como index.php), no se mostrará automáticamente una lista de los archivos en ese directorio.
 Options All -Indexes
 
+#Esta línea activa el motor de reescritura de URL de Apache. Sin esta directiva, las reglas de reescritura no 
+#se aplicarán.
 RewriteEngine on
 
+#Esta regla de reescritura indica cómo deben manejarse las URL.
+#RewriteRule: Indica que se está estableciendo una regla de reescritura.
+#^([a-zA-Z0-9-]*)$: Define el patrón de la URL que se está buscando.
+#index.php?validar=$1: Es la URL a la que se redirige internamente. $1 se reemplazará con la parte capturada de la URL.
+#[L]: Indica que esta regla debe ser la última aplicada si se cumple.
 RewriteRule ^([a-zA-Z0-9-]*)$ index.php?validar=$1 [L]
