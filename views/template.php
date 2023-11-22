@@ -64,7 +64,7 @@
 	<footer>
 		
 		<center>
-		<p>Juego desarrollado por Tutoriales a tu Alcance | <a href="https://tutorialesatualcance.com" target="_blank">www.tutorialesatualcance.com</a></p>
+		<p>Juego desarrollado por Inovix</p>
 		</center>
 
 	</footer>
