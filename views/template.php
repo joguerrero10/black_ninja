@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>BLACK NINJA | JUEGO DE PLATAFORMA</title>
@@ -12,6 +13,7 @@
 	<script src="views/js/screenfull.min.js"></script>
 
 </head>
+
 <body>
 
 	<!--=====================================
@@ -31,28 +33,26 @@
 	======================================-->
 
 	<div id="contenedor">
-		
+
 		<?php
 
-			if(isset($_GET["validar"])){
+		if (isset($_GET["validar"])) {
 
-				switch($_GET["validar"]){
-					case "inicio":
+			switch ($_GET["validar"]) {
+				case "inicio":
 					include "modules/inicio.php";
 					break;
-					case "salir":
+				case "salir":
 					include "modules/salir.php";
 					break;
-					default:
+				default:
 					include "modules/ingreso.php";
-				}
-
-			}else{
-
-				include "modules/ingreso.php";
-			
 			}
-	
+		} else {
+
+			include "modules/ingreso.php";
+		}
+
 		?>
 
 	</div>
@@ -62,17 +62,18 @@
 	======================================-->
 
 	<footer>
-		
+
 		<center>
-		<p>Juego desarrollado por Inovix</p>
+			<p>Juego desarrollado por Inovix</p>
 		</center>
 
 	</footer>
 
-<script src="views/js/variables_y_propiedades.js"></script>
-<script src="views/js/inicio.js"></script>
-<script src="views/js/juego.js"></script>
-<script src="views/js/lienzo.js"></script>
-<script src="views/js/ampliarCanvas.js"></script>
+	<script src="views/js/variables_y_propiedades.js"></script>
+	<script src="views/js/inicio.js"></script>
+	<script src="views/js/juego.js"></script>
+	<script src="views/js/lienzo.js"></script>
+	<script src="views/js/ampliarCanvas.js"></script>
 </body>
+
 </html>
